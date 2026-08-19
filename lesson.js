@@ -1,47 +1,13 @@
-const concepts = [
-    {
-        title: "Revenue",
-        description: "Revenue is the total income a company generates from its normal business activities before expenses are deducted."
-    },
-    {
-        title: "Profit",
-        description: "Profit is the amount a company keeps after its expenses are deducted from revenue."
-    },
-    {
-        title: "Asset",
-        description: "An asset is something a company owns that has economic value."
-    },
-    {
-        title: "Liability",
-        description: "A liability is a financial obligation that a company owes to another party."
-    },
-    {
-        title: "Equity",
-        description: "Equity represents the ownership value remaining after liabilities are subtracted from assets."
-    }
+const concepts=[
+{title:"Revenue",category:"Accounting",description:"Revenue is total income from normal business activities before expenses.",formula:"",example:"Example: €10M sales means €10M revenue before costs."},
+{title:"Operating Margin",category:"Financial Analysis",description:"Shows what percentage of revenue remains as operating profit.",formula:"Operating Margin = Operating Income ÷ Revenue × 100",example:"€20M operating income on €100M revenue = 20%."},
+{title:"Free Cash Flow",category:"Cash Flow",description:"Cash remaining after CapEx is deducted from OCF.",formula:"FCF = OCF − CapEx",example:"€120M OCF − €50M CapEx = €70M FCF."},
+{title:"Net Debt",category:"Capital Structure",description:"Debt after subtracting cash.",formula:"Net Debt = Debt − Cash",example:"€500M debt − €200M cash = €300M net debt."},
+{title:"Earnings Quality",category:"Financial Analysis",description:"How sustainable and cash-supported reported profit appears to be.",formula:"",example:"Rising net income with collapsing OCF may weaken earnings quality."}
 ];
-
-let currentConcept = 0;
-function showConcept() {
-    document.getElementById("concept-title").textContent =
-        concepts[currentConcept].title;
-
-    document.getElementById("concept-description").textContent =
-        concepts[currentConcept].description;
-
-    document.getElementById("concept-progress").textContent =
-        `Concept ${currentConcept + 1} / ${concepts.length}`;
-}
-document.getElementById("know-btn").addEventListener("click", function () {
-    currentConcept++;
-
-    if (currentConcept < concepts.length) {
-        showConcept();
-    } else {
-        alert("Lesson completed!");
-        window.location.href = "index.html";
-    }
-});
-document.getElementById("again-btn").addEventListener("click", function () {
-    alert("We'll show this concept again later.");
-});
+let current=0,mastered=0,review=[];
+function render(){const c=concepts[current];document.getElementById("concept-title").textContent=c.title;document.getElementById("concept-category").textContent=c.category;document.getElementById("concept-description").textContent=c.description;document.getElementById("concept-example").textContent=c.example;const f=document.getElementById("formula-box");f.textContent=c.formula;f.classList.toggle("hidden",!c.formula);document.getElementById("lesson-progress-fill").style.width=`${mastered/concepts.length*100}%`;document.getElementById("lesson-progress-text").textContent=`${mastered} / ${concepts.length} mastered`}
+function complete(){const s=getState();s.masteredConcepts=Math.min(s.totalConcepts,s.masteredConcepts+mastered);s.coins+=mastered*5;saveState(s);alert(`Lesson complete! +${mastered*5} MindCoins`);location.href="index.html"}
+document.getElementById("know-btn").onclick=()=>{mastered++;if(current<concepts.length-1){current++;render()}else if(review.length){current=review.shift();render()}else complete()};
+document.getElementById("again-btn").onclick=()=>{if(!review.includes(current))review.push(current);if(current<concepts.length-1){current++;render()}else if(review.length){current=review.shift();render()}};
+render();

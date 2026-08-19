@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <title>MarketMind</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>MarketMind</title><link rel="stylesheet" href="style.css">
 </head>
+<body data-page="dashboard">
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
+  <nav class="nav">
+    <a class="active" href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a>
+    <a href="dictionary.html">Dictionary</a><a href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a>
+  </nav>
+  <div class="profile-chip"><span class="avatar">A</span><span>Student</span></div>
+</header>
 
-<<body>
+<main class="shell">
+  <section class="hero">
+    <div><p class="eyebrow">WELCOME BACK</p><h1>Build your financial edge.</h1>
+    <p class="muted hero-copy">Learn concepts, practice them, and apply your knowledge in analyst-style cases and a virtual market simulator.</p></div>
+    <div class="profile-chip"><span>🔥 <strong id="streak-count">7</strong> day streak</span>&nbsp;&nbsp;<span>◈ <strong id="coin-count">145</strong> MindCoins</span></div>
+  </section>
 
-    <header>
-        <h1>MarketMind</h1>
-        <p>Learn finance. Build your edge.</p>
-    </header>
+  <section class="dashboard-grid">
+    <article class="card progress-card">
+      <div class="card-head"><div><p class="eyebrow">CURRENT PATH</p><h2>Finance Fundamentals</h2></div><span class="pill">Level 1</span></div>
+      <div class="progress-meta"><span id="progress-text">36 / 50 concepts mastered</span><strong id="progress-percent">72%</strong></div>
+      <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      <div class="skill-grid">
+        <div class="skill"><span>Accounting</span><strong>88%</strong></div><div class="skill"><span>Investing</span><strong>72%</strong></div>
+        <div class="skill"><span>Valuation</span><strong>42%</strong></div><div class="skill"><span>Analysis</span><strong>35%</strong></div>
+      </div>
+    </article>
 
-    <main>
+    <article class="card">
+      <p class="eyebrow">TODAY</p><h2>Daily lesson</h2><p class="muted">5 concepts · about 8 minutes</p>
+      <a class="btn primary" href="lesson.html">Start lesson →</a>
+    </article>
 
-        <section>
-            <h2>Today's Progress</h2>
-            <p>🔥 7 day streak</p>
-            <p>🪙 145 MindCoins</p>
-        </section>
+    <article class="card">
+      <p class="eyebrow">NEW IN V0.3</p><h2>Finance Dictionary</h2>
+      <p class="muted">Search your growing library of finance concepts. Built to scale to 500+ terms.</p>
+      <a class="btn secondary" href="dictionary.html">Open dictionary</a>
+    </article>
 
-        <section>
-    <h2>Finance Fundamentals</h2>
-    <p id="progress-text">36 / 50 concepts mastered</p>
+    <article class="card">
+      <p class="eyebrow">NEW IN V0.3</p><h2>Market Simulator</h2>
+      <p class="muted">Practice with virtual cash. Buy and sell a small set of simulated assets.</p>
+      <a class="btn secondary" href="simulator.html">Open simulator</a>
+    </article>
 
-    <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
+    <article class="card reward-card">
+      <div class="reward-orb">◈</div><div><p class="eyebrow">DAILY REWARD</p><h2>+15 MindCoins</h2><p class="muted">Claim once per day.</p></div>
+      <button id="claim-reward" class="btn ghost">Claim reward</button>
+    </article>
+  </section>
+
+  <section class="levels-section">
+    <p class="eyebrow">LEARNING MAP</p><h2>Your levels</h2>
+    <div class="levels-grid">
+      <article class="level-card"><span class="level-number">01</span><h3>Finance Fundamentals</h3><p>Statements, cash, debt and core ratios.</p><div class="tiny-bar"><div style="width:72%"></div></div><small>72% complete</small></article>
+      <article class="level-card"><span class="level-number">02</span><h3>Financial Analysis</h3><p>Margins, working capital, earnings quality and leverage.</p><div class="tiny-bar"><div style="width:31%"></div></div><small>31% complete</small></article>
+      <article class="level-card"><span class="level-number">03</span><h3>Valuation</h3><p>Multiples, DCF, WACC and scenario work.</p><div class="tiny-bar"><div style="width:12%"></div></div><small>12% complete</small></article>
+      <article class="level-card"><span class="level-number">04</span><h3>Investment Banking</h3><p>M&A, comps and transaction thinking.</p><small>🔒 Unlock later</small></article>
     </div>
-</section>
-
-        <section>
-            <h2>Today's Lesson</h2>
-            <p>Learn 10 new finance concepts</p>
-            <button id="start-lesson-btn">Start Lesson</button>
-        </section>
-
-    </main>
-
-    <script src="script.js"></script>
-</body> 
+  </section>
+</main>
+<script src="app.js"></script>
+</body></html>

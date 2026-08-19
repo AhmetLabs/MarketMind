@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MarketMind — Simulator</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
+  <nav class="nav"><a href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a><a href="dictionary.html">Dictionary</a><a class="active" href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a></nav>
+  <div class="profile-chip"><span class="avatar">A</span><span>Student</span></div>
+</header>
+
+<main class="shell">
+  <section class="page-hero"><p class="eyebrow">PRACTICE MODE</p><h1>Market Simulator</h1>
+    <p class="muted">Use virtual cash to practice portfolio decisions. Prices are fictional in v0.3 — this is a learning simulation, not a live trading platform.</p>
+  </section>
+
+  <section class="sim-grid">
+    <div>
+      <article class="card">
+        <div class="portfolio-hero">
+          <div class="portfolio-value"><small>Portfolio value</small><strong id="portfolio-value">€10,000.00</strong></div>
+          <span class="pill">Virtual cash only</span>
+        </div>
+        <div class="stat-strip">
+          <div class="stat-box"><small>Cash</small><strong id="cash-value">€10,000.00</strong></div>
+          <div class="stat-box"><small>Invested</small><strong id="invested-value">€0.00</strong></div>
+          <div class="stat-box"><small>Total return</small><strong id="return-value">0.0%</strong></div>
+        </div>
+      </article>
+
+      <article class="card" style="margin-top:18px">
+        <div class="card-head"><div><p class="eyebrow">SIMULATED MARKET</p><h2>Assets</h2></div><span class="muted">Fictional prices</span></div>
+        <div id="market-list" class="market-list"></div>
+      </article>
+    </div>
+
+    <div>
+      <article class="card trade-box">
+        <p class="eyebrow">TRADE</p><h2>Place a virtual order</h2>
+        <label class="muted">Asset</label><select id="trade-asset"></select>
+        <label class="muted">Quantity</label><input id="trade-qty" type="number" min="1" value="1">
+        <div class="trade-actions"><button id="buy-btn" class="btn primary">Buy</button><button id="sell-btn" class="btn ghost">Sell</button></div>
+        <p id="trade-message" class="trade-note">Trades use virtual cash only.</p>
+      </article>
+
+      <article class="card" style="margin-top:18px">
+        <div class="card-head"><div><p class="eyebrow">PORTFOLIO</p><h2>Your holdings</h2></div><span id="holding-count" class="pill">0 assets</span></div>
+        <div id="holdings" class="holdings"><p class="muted">No positions yet.</p></div>
+      </article>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script><script src="simulator.js"></script>
+</body></html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MarketMind — Dictionary</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
+  <nav class="nav"><a href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a><a class="active" href="dictionary.html">Dictionary</a><a href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a></nav>
+  <div class="profile-chip"><span class="avatar">A</span><span>Student</span></div>
+</header>
+<main class="shell">
+  <section class="page-hero"><p class="eyebrow">FINANCE LIBRARY</p><h1>Dictionary</h1>
+  <p class="muted">Search concepts by name, abbreviation, category or level. This prototype contains a starter set and is structured to scale to 500+ terms.</p></section>
+
+  <section class="search-row">
+    <input id="search-input" placeholder="Search: FCF, valuation, debt...">
+    <select id="category-filter"><option value="">All categories</option></select>
+    <select id="level-filter"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+  </section>
+
+  <p id="dictionary-count" class="dictionary-count"></p>
+  <section id="dictionary-grid" class="dictionary-grid"></section>
+</main>
+
+<div id="term-modal" class="modal">
+  <div class="modal-card">
+    <button id="modal-close" class="modal-close">×</button>
+    <p id="modal-category" class="eyebrow"></p>
+    <h2 id="modal-title"></h2>
+    <p id="modal-definition" class="muted"></p>
+    <div id="modal-formula" class="term-formula hidden"></div>
+    <div id="modal-example" class="term-example"></div>
+  </div>
+</div>
+
+<script src="dictionary.js"></script>
+</body></html>
