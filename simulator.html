@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MarketMind — Simulator</title><link rel="stylesheet" href="style.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>MarketMind — Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 <header class="topbar">
-  <button class="menu-btn" id="menu-btn" aria-label="Open menu">☰</button><a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
-  <nav class="nav"><a href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a><a href="dictionary.html">Dictionary</a><a class="active" href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a></nav>
+  <button class="menu-btn" id="menu-btn" aria-label="Open menu">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
+  <nav class="nav">
+    <a href="index.html">Dashboard</a>
+    <a href="lesson.html">Learn</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="dictionary.html">Dictionary</a>
+    <a class="active" href="simulator.html">Simulator</a>
+    <a href="analyst.html">Analyst Lab</a>
+  </nav>
   <div class="profile-chip"><span class="avatar">A</span><span>Student</span></div>
 </header>
+
 <aside id="sidebar" class="sidebar">
   <div class="sidebar-top"><strong>MarketMind</strong><button id="sidebar-close" class="sidebar-close">×</button></div>
   <a href="profile.html">👤 Profile</a>
@@ -16,21 +30,30 @@
   <a href="simulator.html">↗ Simulator</a><a href="portfolios.html">▤ Portfolios</a><a href="news.html">◫ News</a>
   <div class="sidebar-label">ACCOUNT</div>
   <a href="settings.html">⚙ Settings</a><a href="upgrade.html">♢ Upgrade plan</a>
-</aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
-
+</aside>
+<div id="sidebar-overlay" class="sidebar-overlay"></div>
 
 <main class="shell">
-  <section class="page-hero"><p class="eyebrow">PRACTICE MODE</p><h1>Market Simulator</h1>
-    <p class="muted">Use virtual cash to practice portfolio decisions. Prices are fictional in v0.3 — this is a learning simulation, not a live trading platform.</p>
+  <section class="page-hero">
+    <p class="eyebrow">PRACTICE MODE · V0.5</p>
+    <h1>Historical Market Simulator</h1>
+    <p class="muted">Rewind through a fictional market timeline, analyze an asset, then buy, hold, add, or sell with virtual cash.</p>
   </section>
 
-  <section class="sim-grid">
-    <div>
+  <section class="simulator-v5-grid">
+    <div class="simulator-main">
       <article class="card">
         <div class="portfolio-hero">
-          <div class="portfolio-value"><small>Portfolio value</small><strong id="portfolio-value">€10,000.00</strong></div>
-          <span class="pill">Virtual cash only</span>
+          <div class="portfolio-value">
+            <small>Portfolio value</small>
+            <strong id="portfolio-value">€10,000.00</strong>
+          </div>
+          <div class="sim-date-box">
+            <small>Simulation date</small>
+            <strong id="simulation-date">—</strong>
+          </div>
         </div>
+
         <div class="stat-strip">
           <div class="stat-box"><small>Cash</small><strong id="cash-value">€10,000.00</strong></div>
           <div class="stat-box"><small>Invested</small><strong id="invested-value">€0.00</strong></div>
@@ -38,27 +61,119 @@
         </div>
       </article>
 
-      <article class="card" style="margin-top:18px"><p class="eyebrow">ASSET VIEW</p><h2>Historical chart preview</h2><div class="chart-toolbar"><button class="active">1D</button><button>5D</button><button>1M</button><button>6M</button><button>1Y</button><button>5Y</button></div><div class="fake-chart"></div><p class="trade-note">v0.5 will replace this preview with an interactive historical timeline.</p></article><article class="card" style="margin-top:18px">
-        <div class="card-head"><div><p class="eyebrow">SIMULATED MARKET</p><h2>Assets</h2></div><span class="muted">Fictional prices</span></div>
+      <article class="card" style="margin-top:18px">
+        <div class="card-head">
+          <div>
+            <p class="eyebrow">INTERACTIVE CHART</p>
+            <h2 id="asset-title">Aurora Tech</h2>
+            <p class="muted" id="asset-subtitle">AUR · Stock</p>
+          </div>
+          <div class="price-block">
+            <strong id="asset-price">€0.00</strong>
+            <span id="asset-change" class="positive">0.0%</span>
+          </div>
+        </div>
+
+        <div class="chart-toolbar" id="timeframe-buttons">
+          <button data-range="30">1M</button>
+          <button data-range="90">3M</button>
+          <button data-range="180">6M</button>
+          <button data-range="365" class="active">1Y</button>
+          <button data-range="730">2Y</button>
+          <button data-range="0">MAX</button>
+        </div>
+
+        <div class="chart-wrap">
+          <svg id="price-chart" viewBox="0 0 900 320" preserveAspectRatio="none" aria-label="Historical simulated price chart"></svg>
+          <div class="chart-axis-label" id="chart-range-label"></div>
+        </div>
+
+        <div class="rewind-box">
+          <div class="rewind-head">
+            <strong>Time travel</strong>
+            <span class="muted">Move through history without seeing future prices.</span>
+          </div>
+          <input id="time-slider" type="range" min="30" max="729" value="729">
+          <div class="rewind-actions">
+            <button id="rewind-30" class="btn ghost">← 30 days</button>
+            <button id="forward-30" class="btn ghost">30 days →</button>
+            <button id="jump-latest" class="btn secondary">Latest available</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="margin-top:18px">
+        <div class="card-head">
+          <div><p class="eyebrow">SIMULATED MARKET</p><h2>Assets</h2></div>
+          <span class="muted">Fictional historical data</span>
+        </div>
         <div id="market-list" class="market-list"></div>
       </article>
     </div>
 
-    <div>
+    <div class="simulator-side">
       <article class="card trade-box">
-        <p class="eyebrow">TRADE</p><h2>Place a virtual order</h2>
-        <label class="muted">Asset</label><select id="trade-asset"></select>
-        <label class="muted">Quantity</label><input id="trade-qty" type="number" min="1" value="1">
-        <button id="analyze-btn" class="btn secondary">Analyze before buying</button><div id="analysis-box" class="analysis-panel hidden"><strong>Quick analysis checklist</strong><ul><li>Growth: Revenue and earnings</li><li>Cash: OCF and FCF</li><li>Balance sheet: Debt and liquidity</li><li>Valuation: Price vs fundamentals</li><li>Thesis: Why are you buying?</li></ul></div><div class="trade-actions"><button id="buy-btn" class="btn primary">Buy</button><button id="sell-btn" class="btn ghost">Sell</button></div>
-        <p id="trade-message" class="trade-note">Trades use virtual cash only.</p>
+        <p class="eyebrow">TRADE</p>
+        <h2>Virtual order</h2>
+
+        <label class="muted">Asset</label>
+        <select id="trade-asset"></select>
+
+        <label class="muted">Quantity</label>
+        <input id="trade-qty" type="number" min="1" value="1">
+
+        <button id="analyze-btn" class="btn secondary">Analyze before buying</button>
+
+        <div id="analysis-box" class="analysis-panel hidden">
+          <div class="analysis-score">
+            <span>Analysis score</span>
+            <strong id="analysis-score">0 / 5</strong>
+          </div>
+          <label><input type="checkbox" class="analysis-check"> I understand the business</label>
+          <label><input type="checkbox" class="analysis-check"> I checked growth and profitability</label>
+          <label><input type="checkbox" class="analysis-check"> I checked cash flow and debt</label>
+          <label><input type="checkbox" class="analysis-check"> I considered valuation</label>
+          <label><input type="checkbox" class="analysis-check"> I wrote a reason for buying</label>
+          <textarea id="trade-thesis" placeholder="Why are you buying this asset?"></textarea>
+        </div>
+
+        <div class="trade-actions">
+          <button id="buy-btn" class="btn primary">Buy / Add</button>
+          <button id="sell-btn" class="btn ghost">Sell</button>
+        </div>
+
+        <p id="trade-message" class="trade-note">Virtual trades use only data available up to the selected simulation date.</p>
       </article>
 
       <article class="card" style="margin-top:18px">
-        <div class="card-head"><div><p class="eyebrow">PORTFOLIO</p><h2>Your holdings</h2></div><span id="holding-count" class="pill">0 assets</span></div>
+        <div class="card-head">
+          <div><p class="eyebrow">YOUR POSITION</p><h2>Selected asset</h2></div>
+          <span id="holding-count" class="pill">0 assets</span>
+        </div>
+        <div id="selected-position" class="position-card">
+          <p class="muted">No position in this asset yet.</p>
+        </div>
+      </article>
+
+      <article class="card" style="margin-top:18px">
+        <div class="card-head">
+          <div><p class="eyebrow">PORTFOLIO</p><h2>Holdings</h2></div>
+          <a class="btn ghost" href="portfolios.html">Manage</a>
+        </div>
         <div id="holdings" class="holdings"><p class="muted">No positions yet.</p></div>
+      </article>
+
+      <article class="card risk-card" style="margin-top:18px">
+        <p class="eyebrow">FUTURE V0.8</p>
+        <h2>Leverage preview</h2>
+        <p class="muted">Leverage is intentionally locked for now. Later this section will teach margin, interest, liquidation and amplified losses before enabling it.</p>
+        <button class="btn ghost" disabled>🔒 Leverage locked</button>
       </article>
     </div>
   </section>
 </main>
-<script src="app.js"></script><script src="simulator.js"></script>
-</body></html>
+
+<script src="app.js"></script>
+<script src="simulator.js"></script>
+</body>
+</html>

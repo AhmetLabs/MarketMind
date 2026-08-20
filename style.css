@@ -135,3 +135,27 @@ button{color:inherit}
 
 .menu-btn{background:transparent;border:1px solid var(--line);color:var(--text);width:40px;height:40px;border-radius:11px;cursor:pointer;font-size:20px;display:grid;place-items:center}
 .sidebar{position:fixed;left:-320px;top:0;width:300px;height:100vh;background:#091625;border-right:1px solid var(--line);z-index:100;padding:18px;transition:left .22s ease;box-shadow:var(--shadow);overflow:auto}.sidebar.open{left:0}.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:90;display:none}.sidebar-overlay.show{display:block}.sidebar-top{display:flex;justify-content:space-between;align-items:center;padding:8px 4px 18px;font-size:18px}.sidebar-close{background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer}.sidebar a{display:block;padding:11px 12px;border-radius:10px;color:#d7e0ec;margin:2px 0}.sidebar a:hover{background:rgba(255,255,255,.06)}.sidebar-label{font-size:10px;letter-spacing:.16em;color:#5f7590;font-weight:900;margin:20px 10px 7px}.page-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.portfolio-list{display:grid;gap:12px;margin-top:18px}.portfolio-card{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);display:flex;align-items:center;justify-content:space-between;gap:14px}.portfolio-card small{color:var(--muted)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid input,.form-grid select{width:100%;background:#0a1727;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px}.analysis-panel{border:1px solid var(--line);border-radius:14px;padding:16px;background:rgba(255,255,255,.02);margin-top:14px}.analysis-panel ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}.fake-chart{height:240px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(53,224,143,.08),rgba(7,17,31,0));position:relative;overflow:hidden;margin-top:14px}.fake-chart:after{content:"v0.5 interactive chart preview";position:absolute;left:18px;bottom:14px;color:var(--muted);font-size:12px}.chart-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.chart-toolbar button{background:#122238;border:1px solid var(--line);color:var(--muted);padding:8px 10px;border-radius:9px;cursor:pointer}.chart-toolbar button.active{color:var(--green);border-color:#2f6c55}@media(max-width:900px){.page-grid,.form-grid{grid-template-columns:1fr}}
+
+.simulator-v5-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:start}
+.simulator-side{position:sticky;top:90px}
+.sim-date-box{text-align:right}.sim-date-box small{display:block;color:var(--muted)}
+.price-block{display:flex;flex-direction:column;align-items:flex-end}.price-block strong{font-size:30px}
+.chart-wrap{height:330px;margin-top:10px;position:relative;border:1px solid var(--line);border-radius:16px;background:#081524;padding:8px}
+#price-chart{width:100%;height:100%;display:block}
+.chart-axis-label{position:absolute;bottom:9px;right:14px;color:#61758e;font-size:11px}
+.rewind-box{margin-top:16px;padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}
+.rewind-head{display:flex;justify-content:space-between;gap:16px;margin-bottom:12px}
+#time-slider{width:100%;accent-color:#35e08f}
+.rewind-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.asset-select-btn{border:0;background:transparent;color:inherit;text-align:left;padding:0;cursor:pointer}
+.asset-row.asset-selected{border-color:#2f6c55;background:rgba(53,224,143,.045)}
+.analysis-score{display:flex;justify-content:space-between;margin-bottom:12px}
+.analysis-panel label{display:block;margin:10px 0;color:#c7d2df}
+.analysis-panel textarea{width:100%;min-height:100px;margin-top:12px;background:#081524;color:white;border:1px solid var(--line);border-radius:10px;padding:11px}
+.position-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.position-metrics span{padding:11px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.02)}
+.position-metrics small{display:block;color:var(--muted)}
+.decision-row{display:flex;gap:8px;margin-top:12px}
+.risk-card button[disabled]{opacity:.55;cursor:not-allowed}
+@media(max-width:980px){.simulator-v5-grid{grid-template-columns:1fr}.simulator-side{position:static}}
+@media(max-width:600px){.position-metrics{grid-template-columns:1fr}.rewind-head{flex-direction:column}.chart-wrap{height:260px}}
