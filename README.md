@@ -1,15 +1,12 @@
-# MarketMind v0.3
+# MarketMind v0.4
 
-New in this prototype:
-- Finance Dictionary with starter data and search/filtering
-- Market Simulator with €10,000 virtual cash
-- Separate MindCoins and simulator cash
-- Buy/sell logic for fictional assets
-- Persistent portfolio via localStorage
-- Existing dashboard, lesson, quiz and Analyst Lab
+New in v0.4:
+- Hamburger sidebar menu
+- Profile, Settings, News and Upgrade placeholders
+- Dictionary expanded to 105 learned finance concepts with formulas where applicable
+- Multiple virtual portfolios with €1,000–€1B starting capital
+- Portfolio reset structure
+- Analyze-before-buying simulator workflow
+- Historical chart/timeframe preview for v0.5
 
-## Run
-Open `index.html` with Live Server in VS Code.
-
-## Important
-The simulator uses fictional prices and assets. It is for educational practice only.
+Run index.html with Live Server.

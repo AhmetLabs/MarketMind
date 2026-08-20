@@ -68,3 +68,5 @@ function renderPortfolio(){
 document.getElementById("buy-btn").onclick=buy;
 document.getElementById("sell-btn").onclick=sell;
 renderPortfolio();
+
+const ab=document.getElementById("analyze-btn");if(ab)ab.addEventListener("click",()=>{const x=document.getElementById("analysis-box");x.classList.toggle("hidden");ab.textContent=x.classList.contains("hidden")?"Analyze before buying":"Hide analysis"});document.querySelectorAll(".chart-toolbar button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".chart-toolbar button").forEach(x=>x.classList.remove("active"));b.classList.add("active")}));

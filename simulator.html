@@ -3,10 +3,21 @@
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MarketMind — Simulator</title><link rel="stylesheet" href="style.css"></head>
 <body>
 <header class="topbar">
-  <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
+  <button class="menu-btn" id="menu-btn" aria-label="Open menu">☰</button><a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
   <nav class="nav"><a href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a><a href="dictionary.html">Dictionary</a><a class="active" href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a></nav>
   <div class="profile-chip"><span class="avatar">A</span><span>Student</span></div>
 </header>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-top"><strong>MarketMind</strong><button id="sidebar-close" class="sidebar-close">×</button></div>
+  <a href="profile.html">👤 Profile</a>
+  <div class="sidebar-label">LEARN</div>
+  <a href="index.html">⌂ Dashboard</a><a href="lesson.html">▣ Lessons</a><a href="dictionary.html">A–Z Dictionary</a><a href="quiz.html">✓ Quiz</a><a href="analyst.html">⌕ Analyst Lab</a>
+  <div class="sidebar-label">INVEST</div>
+  <a href="simulator.html">↗ Simulator</a><a href="portfolios.html">▤ Portfolios</a><a href="news.html">◫ News</a>
+  <div class="sidebar-label">ACCOUNT</div>
+  <a href="settings.html">⚙ Settings</a><a href="upgrade.html">♢ Upgrade plan</a>
+</aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
+
 
 <main class="shell">
   <section class="page-hero"><p class="eyebrow">PRACTICE MODE</p><h1>Market Simulator</h1>
@@ -27,7 +38,7 @@
         </div>
       </article>
 
-      <article class="card" style="margin-top:18px">
+      <article class="card" style="margin-top:18px"><p class="eyebrow">ASSET VIEW</p><h2>Historical chart preview</h2><div class="chart-toolbar"><button class="active">1D</button><button>5D</button><button>1M</button><button>6M</button><button>1Y</button><button>5Y</button></div><div class="fake-chart"></div><p class="trade-note">v0.5 will replace this preview with an interactive historical timeline.</p></article><article class="card" style="margin-top:18px">
         <div class="card-head"><div><p class="eyebrow">SIMULATED MARKET</p><h2>Assets</h2></div><span class="muted">Fictional prices</span></div>
         <div id="market-list" class="market-list"></div>
       </article>
@@ -38,7 +49,7 @@
         <p class="eyebrow">TRADE</p><h2>Place a virtual order</h2>
         <label class="muted">Asset</label><select id="trade-asset"></select>
         <label class="muted">Quantity</label><input id="trade-qty" type="number" min="1" value="1">
-        <div class="trade-actions"><button id="buy-btn" class="btn primary">Buy</button><button id="sell-btn" class="btn ghost">Sell</button></div>
+        <button id="analyze-btn" class="btn secondary">Analyze before buying</button><div id="analysis-box" class="analysis-panel hidden"><strong>Quick analysis checklist</strong><ul><li>Growth: Revenue and earnings</li><li>Cash: OCF and FCF</li><li>Balance sheet: Debt and liquidity</li><li>Valuation: Price vs fundamentals</li><li>Thesis: Why are you buying?</li></ul></div><div class="trade-actions"><button id="buy-btn" class="btn primary">Buy</button><button id="sell-btn" class="btn ghost">Sell</button></div>
         <p id="trade-message" class="trade-note">Trades use virtual cash only.</p>
       </article>
 

@@ -18,3 +18,5 @@ function setupReward(){
   b.addEventListener("click",()=>{const x=getState();x.coins+=15;x.lastRewardDate=today;saveState(x);b.textContent="+15 claimed ✓";b.disabled=true;updateDashboard()})
 }
 document.addEventListener("DOMContentLoaded",()=>{updateDashboard();setupReward()});
+
+function setupSidebar(){const b=document.getElementById("menu-btn"),s=document.getElementById("sidebar"),c=document.getElementById("sidebar-close"),o=document.getElementById("sidebar-overlay");if(!b||!s)return;const open=()=>{s.classList.add("open");o.classList.add("show")};const close=()=>{s.classList.remove("open");o.classList.remove("show")};b.addEventListener("click",open);c.addEventListener("click",close);o.addEventListener("click",close)}document.addEventListener("DOMContentLoaded",setupSidebar);
