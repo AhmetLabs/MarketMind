@@ -18,3 +18,6 @@ Open `index.html` with Live Server in VS Code.
 ## Important
 All market prices and assets are fictional in v0.5.
 This version is educational and does not provide live trading or financial advice.
+
+## v0.6
+Multiple portfolio engine and configurable starting capital.
