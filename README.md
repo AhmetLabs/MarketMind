@@ -15,3 +15,10 @@ Not production-ready: no backend authentication, live market data, real trading,
 - Added reset confirmation and success message
 - Added Delete portfolio action
 - Added Back arrow/button on secondary pages
+
+## v1.0.2 final fixes
+- Restored the previous dashboard design
+- Restored and standardized the hamburger menu beside MarketMind
+- Hamburger now opens the full left navigation on every page
+- Menu contains Profile, Dashboard, Lessons, Dictionary, Quiz, Analyst Lab, Simulator, Portfolios, Leverage Lab, News, Settings and Upgrade
+- Keeps all v1.0.1 simulator, reset and back-navigation fixes

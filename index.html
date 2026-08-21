@@ -1,1 +1,94 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MarketMind v1.0</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a><nav class="nav"><a class="active" href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="dictionary.html">Dictionary</a><a href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a><a href="news.html">News</a></nav></header><main class="shell"><section class="hero"><div><p class="eyebrow">MARKETMIND v1.0 PROTOTYPE</p><h1>Learn finance by actually using it.</h1><p class="muted hero-copy">Learn → Test → Analyze → Invest → Review.</p><div class="hero-cta"><a class="btn primary" href="lesson.html">Continue learning</a><a class="btn secondary" href="simulator.html">Open simulator</a></div></div></section><section class="journey"><a href="lesson.html"><span>01</span><strong>Learn</strong><small>Concepts & formulas</small></a><a href="quiz.html"><span>02</span><strong>Test</strong><small>Recall & review</small></a><a href="analyst.html"><span>03</span><strong>Analyze</strong><small>Build a thesis</small></a><a href="simulator.html"><span>04</span><strong>Invest</strong><small>Virtual practice</small></a><a href="news.html"><span>05</span><strong>Review</strong><small>React to new information</small></a></section><section class="dashboard-grid" style="margin-top:20px"><article class="card"><p class="eyebrow">LEARNING</p><h2>Daily finance</h2><p class="muted">Lessons, dictionary, quizzes and progress.</p><a class="btn secondary" href="lesson.html">Learn</a></article><article class="card"><p class="eyebrow">ANALYSIS</p><h2>Analyst Lab</h2><p class="muted">Facts, hypotheses, valuation and risk.</p><a class="btn secondary" href="analyst.html">Analyze</a></article><article class="card"><p class="eyebrow">SIMULATION</p><h2>Historical market</h2><p class="muted">Time travel, portfolio decisions and P/L.</p><a class="btn secondary" href="simulator.html">Simulate</a></article><article class="card"><p class="eyebrow">RISK</p><h2>Leverage Lab</h2><p class="muted">Understand amplification before enabling leverage.</p><a class="btn secondary" href="leverage.html">Study risk</a></article><article class="card"><p class="eyebrow">PORTFOLIOS</p><h2>Multiple strategies</h2><p class="muted">Separate portfolios from €1K to €1B starting capital.</p><a class="btn secondary" href="portfolios.html">Portfolios</a></article><article class="card"><p class="eyebrow">NEWS</p><h2>Thesis review</h2><p class="muted">Distinguish a changing thesis from a changing price.</p><a class="btn secondary" href="news.html">Review news</a></article></section><article class="card" style="margin-top:20px"><p class="eyebrow">PROTOTYPE STATUS</p><h2>What v1.0 means</h2><p class="muted">This is a front-end learning prototype, not a production finance platform. Live market data, authentication, backend databases, real payments and broker connections are intentionally not included yet.</p></article></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>MarketMind</title><link rel="stylesheet" href="style.css">
+</head>
+<body data-page="dashboard">
+<header class="topbar">
+  <button class="menu-btn" id="menu-btn" aria-label="Open menu">☰</button><a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
+  <nav class="nav">
+    <a class="active" href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a>
+    <a href="dictionary.html">Dictionary</a><a href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a>
+  </nav>
+  <div class="profile-chip"><span class="avatar">A</span><span>Student</span></div>
+</header>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-top"><strong>MarketMind</strong><button id="sidebar-close" class="sidebar-close" aria-label="Close menu">×</button></div>
+  <a href="profile.html">👤 Profile</a>
+  <div class="sidebar-label">LEARN</div>
+  <a href="index.html">⌂ Dashboard</a>
+  <a href="lesson.html">▣ Lessons</a>
+  <a href="dictionary.html">A–Z Dictionary</a>
+  <a href="quiz.html">✓ Quiz</a>
+  <a href="analyst.html">⌕ Analyst Lab</a>
+  <div class="sidebar-label">INVEST</div>
+  <a href="simulator.html">↗ Simulator</a>
+  <a href="portfolios.html">▤ Portfolios</a>
+  <a href="leverage.html">⚡ Leverage Lab</a>
+  <a href="news.html">◫ News</a>
+  <div class="sidebar-label">ACCOUNT</div>
+  <a href="settings.html">⚙ Settings</a>
+  <a href="upgrade.html">♢ Upgrade plan</a>
+</aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+
+<main class="shell">
+  <section class="hero">
+    <div><p class="eyebrow">WELCOME BACK</p><h1>Build your financial edge.</h1>
+    <p class="muted hero-copy">Learn concepts, practice them, and apply your knowledge in analyst-style cases and a virtual market simulator.</p></div>
+    <div class="profile-chip"><span>🔥 <strong id="streak-count">7</strong> day streak</span>&nbsp;&nbsp;<span>◈ <strong id="coin-count">145</strong> MindCoins</span></div>
+  </section>
+
+  <article class="card" style="margin-bottom:18px">
+      <p class="eyebrow">NEW IN V0.5</p>
+      <h2>Historical Simulator</h2>
+      <p class="muted">Rewind a fictional market timeline, inspect charts, analyze before buying, and make portfolio decisions without seeing future prices.</p>
+      <a class="btn primary" href="simulator.html">Try time travel →</a>
+    </article>
+<section class="dashboard-grid">
+    <article class="card progress-card">
+      <div class="card-head"><div><p class="eyebrow">CURRENT PATH</p><h2>Finance Fundamentals</h2></div><span class="pill">Level 1</span></div>
+      <div class="progress-meta"><span id="progress-text">36 / 50 concepts mastered</span><strong id="progress-percent">72%</strong></div>
+      <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      <div class="skill-grid">
+        <div class="skill"><span>Accounting</span><strong>88%</strong></div><div class="skill"><span>Investing</span><strong>72%</strong></div>
+        <div class="skill"><span>Valuation</span><strong>42%</strong></div><div class="skill"><span>Analysis</span><strong>35%</strong></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <p class="eyebrow">TODAY</p><h2>Daily lesson</h2><p class="muted">5 concepts · about 8 minutes</p>
+      <a class="btn primary" href="lesson.html">Start lesson →</a>
+    </article>
+
+    <article class="card">
+      <p class="eyebrow">NEW IN V0.3</p><h2>Finance Dictionary</h2>
+      <p class="muted">Search your growing library of finance concepts. Built to scale to 500+ terms.</p>
+      <a class="btn secondary" href="dictionary.html">Open dictionary</a>
+    </article>
+
+    <article class="card">
+      <p class="eyebrow">NEW IN V0.3</p><h2>Market Simulator</h2>
+      <p class="muted">Practice with virtual cash. Buy and sell a small set of simulated assets.</p>
+      <a class="btn secondary" href="simulator.html">Open simulator</a>
+    </article>
+
+    <article class="card reward-card">
+      <div class="reward-orb">◈</div><div><p class="eyebrow">DAILY REWARD</p><h2>+15 MindCoins</h2><p class="muted">Claim once per day.</p></div>
+      <button id="claim-reward" class="btn ghost">Claim reward</button>
+    </article>
+  </section>
+
+  <section class="levels-section">
+    <p class="eyebrow">LEARNING MAP</p><h2>Your levels</h2>
+    <div class="levels-grid">
+      <article class="level-card"><span class="level-number">01</span><h3>Finance Fundamentals</h3><p>Statements, cash, debt and core ratios.</p><div class="tiny-bar"><div style="width:72%"></div></div><small>72% complete</small></article>
+      <article class="level-card"><span class="level-number">02</span><h3>Financial Analysis</h3><p>Margins, working capital, earnings quality and leverage.</p><div class="tiny-bar"><div style="width:31%"></div></div><small>31% complete</small></article>
+      <article class="level-card"><span class="level-number">03</span><h3>Valuation</h3><p>Multiples, DCF, WACC and scenario work.</p><div class="tiny-bar"><div style="width:12%"></div></div><small>12% complete</small></article>
+      <article class="level-card"><span class="level-number">04</span><h3>Investment Banking</h3><p>M&A, comps and transaction thinking.</p><small>🔒 Unlock later</small></article>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body></html>

@@ -50,3 +50,30 @@ function setupBackNavigation() {
 }
 
 document.addEventListener("DOMContentLoaded", setupBackNavigation);
+
+
+function setupMarketMindMenu() {
+  const menu = document.getElementById("menu-btn");
+  const side = document.getElementById("sidebar");
+  const close = document.getElementById("sidebar-close");
+  const overlay = document.getElementById("sidebar-overlay");
+  if (!menu || !side) return;
+
+  const openMenu = () => {
+    side.classList.add("open");
+    if (overlay) overlay.classList.add("show");
+    document.body.classList.add("menu-open");
+  };
+  const closeMenu = () => {
+    side.classList.remove("open");
+    if (overlay) overlay.classList.remove("show");
+    document.body.classList.remove("menu-open");
+  };
+
+  menu.onclick = openMenu;
+  if (close) close.onclick = closeMenu;
+  if (overlay) overlay.onclick = closeMenu;
+  side.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+}
+document.addEventListener("DOMContentLoaded", setupMarketMindMenu);
