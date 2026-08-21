@@ -24,3 +24,6 @@ Multiple portfolio engine and configurable starting capital.
 
 ## v0.7
 Analyze-before-buy flow with level-based difficulty.
+
+## v0.8
+Leverage risk lab with amplified P/L examples.
