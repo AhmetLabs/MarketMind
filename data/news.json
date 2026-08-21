@@ -1,0 +1,30 @@
+[
+  {
+    "date": "2026-01-12",
+    "asset": "AUR",
+    "tag": "Earnings",
+    "headline": "Aurora raises outlook",
+    "summary": "Demand improves, but infrastructure spending remains elevated."
+  },
+  {
+    "date": "2026-02-03",
+    "asset": "GLB",
+    "tag": "Macro",
+    "headline": "Simulated markets fall after rate surprise",
+    "summary": "Investors reassess growth and discount rates."
+  },
+  {
+    "date": "2026-03-19",
+    "asset": "BNK",
+    "tag": "Sector",
+    "headline": "Banking credit quality improves",
+    "summary": "Expected loan losses fall across the simulated sector."
+  },
+  {
+    "date": "2026-04-07",
+    "asset": "GRN",
+    "tag": "Policy",
+    "headline": "Green assets face subsidy uncertainty",
+    "summary": "Policy risk pressures several simulated holdings."
+  }
+]

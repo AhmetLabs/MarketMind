@@ -27,3 +27,6 @@ Analyze-before-buy flow with level-based difficulty.
 
 ## v0.8
 Leverage risk lab with amplified P/L examples.
+
+## v0.9
+Simulated finance news and thesis-review prompts.
