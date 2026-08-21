@@ -21,3 +21,6 @@ This version is educational and does not provide live trading or financial advic
 
 ## v0.6
 Multiple portfolio engine and configurable starting capital.
+
+## v0.7
+Analyze-before-buy flow with level-based difficulty.
