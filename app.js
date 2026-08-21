@@ -20,3 +20,33 @@ function setupReward(){
 document.addEventListener("DOMContentLoaded",()=>{updateDashboard();setupReward()});
 
 function setupSidebar(){const b=document.getElementById("menu-btn"),s=document.getElementById("sidebar"),c=document.getElementById("sidebar-close"),o=document.getElementById("sidebar-overlay");if(!b||!s)return;const open=()=>{s.classList.add("open");o.classList.add("show")};const close=()=>{s.classList.remove("open");o.classList.remove("show")};b.addEventListener("click",open);c.addEventListener("click",close);o.addEventListener("click",close)}document.addEventListener("DOMContentLoaded",setupSidebar);
+
+
+function setupBackNavigation() {
+  const current = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+  if (current === "index.html" || current === "") return;
+
+  const shell = document.querySelector("main.shell");
+  if (!shell || shell.querySelector(".page-back-row")) return;
+
+  const row = document.createElement("div");
+  row.className = "page-back-row";
+  row.innerHTML = `
+    <button class="back-button" type="button" aria-label="Go back">
+      <span aria-hidden="true">←</span>
+      <span>Back</span>
+    </button>
+  `;
+
+  row.querySelector(".back-button").addEventListener("click", () => {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = "index.html";
+    }
+  });
+
+  shell.prepend(row);
+}
+
+document.addEventListener("DOMContentLoaded", setupBackNavigation);

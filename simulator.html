@@ -122,7 +122,10 @@
         <label class="muted">Quantity</label>
         <input id="trade-qty" type="number" min="1" value="1">
 
-        <button id="analyze-btn" class="btn secondary">Analyze before buying</button><a class="btn ghost" href="asset-analysis.html">Full analysis</a><button style="display:none"</button>
+        <div class="analysis-actions">
+          <button id="analyze-btn" class="btn secondary">Analyze before buying</button>
+          <a class="btn ghost" href="asset-analysis.html">Full analysis</a>
+        </div>
 
         <div id="analysis-box" class="analysis-panel hidden">
           <div class="analysis-score">
@@ -163,11 +166,16 @@
         <div id="holdings" class="holdings"><p class="muted">No positions yet.</p></div>
       </article>
 
-      <article class="card risk-card" style="margin-top:18px">
-        <p class="eyebrow">FUTURE V0.8</p>
-        <h2>Leverage preview</h2>
-        <p class="muted">Leverage is intentionally locked for now. Later this section will teach margin, interest, liquidation and amplified losses before enabling it.</p>
-        <button class="btn ghost" disabled>🔒 Leverage locked</button>
+      <article class="card risk-card leverage-card" style="margin-top:18px">
+        <div class="card-head">
+          <div>
+            <p class="eyebrow">RISK EDUCATION</p>
+            <h2>Leverage</h2>
+          </div>
+          <span class="pill">Locked</span>
+        </div>
+        <p class="muted">Leverage is kept separate from the order buttons so the layout stays clear. Open the Leverage Lab to learn how exposure, margin and amplified losses work.</p>
+        <a class="btn ghost" href="leverage.html">Open Leverage Lab</a>
       </article>
     </div>
   </section>
