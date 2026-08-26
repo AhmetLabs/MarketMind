@@ -301,3 +301,78 @@ button{color:inherit}
 .sidebar a:hover{background:#11243a;color:#fff}
 .sidebar-label{padding:18px 12px 6px;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.16em}
 body.menu-open{overflow:hidden}
+
+/* MarketMind v1.1 — real progression system */
+.locked-link{opacity:.42!important;cursor:not-allowed!important;position:relative}
+.locked-link::after{content:"🔒";float:right;font-size:11px;filter:grayscale(1)}
+.mm-toast-host{position:fixed;right:20px;bottom:20px;z-index:5000;display:grid;gap:10px;max-width:min(390px,90vw)}
+.mm-toast{transform:translateY(12px);opacity:0;background:#10243a;border:1px solid #294968;color:#eaf2fb;padding:13px 15px;border-radius:13px;box-shadow:0 16px 45px rgba(0,0,0,.35);transition:.2s ease}
+.mm-toast.show{transform:translateY(0);opacity:1}.mm-toast.level{border-color:#35e08f;color:#c9f7df}.mm-toast.unlock{border-color:#76a9ff;color:#d8e6ff}.mm-toast.locked{border-color:#8a6b38;color:#f3dba9}
+.level-card{transition:.2s ease;position:relative}.level-card.level-locked{opacity:.5;filter:saturate(.6)}.level-card.level-current{border-color:#35e08f;box-shadow:0 0 0 1px rgba(53,224,143,.12) inset}.level-card.level-complete{border-color:#2b5d49}.level-card.level-current::before{content:"CURRENT";position:absolute;right:14px;top:14px;color:#35e08f;font-size:9px;font-weight:900;letter-spacing:.12em}
+.levels-grid-extended{grid-template-columns:repeat(4,1fr)}
+.unlock-list{display:grid;gap:10px;margin-top:14px}.unlock-row{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}.unlock-row small{display:block;color:var(--muted);margin-top:3px}.unlock-row.unlocked{border-color:rgba(53,224,143,.22)}.unlock-row.unlocked>span{color:var(--green)}.unlock-row.locked{opacity:.6}
+.profile-progress-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:950px){.levels-grid-extended{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.levels-grid-extended,.profile-progress-grid{grid-template-columns:1fr}}
+
+
+/* MarketMind v1.2 — lesson review, MindCoin help economy and finance contracts */
+.lesson-meta-row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}
+.lesson-actions,.lesson-help-row,.quiz-help-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.lesson-help-row .btn,.quiz-help-row .btn{font-size:12px}
+.review-list{display:grid;gap:10px;margin:16px 0}
+.review-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}
+.review-item small{display:block;color:var(--muted);margin-top:4px}.review-item>span{color:var(--green);font-size:12px;font-weight:800}
+.answer-correct{border-color:rgba(53,224,143,.65)!important;box-shadow:0 0 0 1px rgba(53,224,143,.15) inset}
+.answer-wrong{border-color:rgba(255,93,107,.65)!important;box-shadow:0 0 0 1px rgba(255,93,107,.12) inset}
+.contract-overlay{position:fixed;inset:0;background:rgba(2,8,15,.78);z-index:9000;display:flex;align-items:center;justify-content:center;padding:22px;backdrop-filter:blur(5px)}
+.contract-card{width:min(660px,95vw);max-height:90vh;overflow:auto;background:linear-gradient(180deg,#10243a,#091625);border:1px solid #36506f;border-radius:24px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.52);position:relative}
+.contract-seal{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:2px solid #35e08f;color:#35e08f;font-weight:950;letter-spacing:.05em;margin-bottom:18px;background:rgba(53,224,143,.06)}
+.contract-seal.signed{font-size:28px}
+.contract-copy{line-height:1.7;color:#d1dbe7}.contract-terms{display:grid;gap:9px;margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
+.contract-terms span{color:#b9c7d6}
+.contract-sign-label{display:block;color:var(--muted);font-size:12px;margin-top:16px}
+.contract-signature{width:100%;padding:13px 14px;margin:7px 0 12px;background:#07121f;color:#fff;border:1px solid var(--line);border-radius:12px;font-size:16px}
+.contract-check{display:flex;gap:9px;align-items:flex-start;color:#c8d4e0;margin:10px 0 18px}
+.contract-card .btn{margin-right:8px;margin-top:8px}
+.contract-reward{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.contract-reward strong{padding:12px 14px;border:1px solid rgba(53,224,143,.28);border-radius:12px;background:rgba(53,224,143,.06);color:#baf4d5}
+.finance-fact{margin-top:20px;padding:18px;border:1px solid #294968;border-radius:15px;background:#0b1a2c}.finance-fact small{color:#76a9ff;font-weight:900;letter-spacing:.12em}.finance-fact p{margin-bottom:0;line-height:1.65}
+@media(max-width:600px){.lesson-actions,.lesson-help-row,.quiz-help-row{flex-direction:column}.lesson-actions .btn,.lesson-help-row .btn,.quiz-help-row .btn{width:100%}}
+
+
+/* MarketMind v1.3 — realistic brokerage simulator */
+.broker-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(320px,.55fr);gap:18px;align-items:start}
+.broker-side{position:sticky;top:88px;min-width:0}
+.broker-account-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.broker-big-number{display:block;font-size:38px;letter-spacing:-.03em;margin:4px 0}
+.broker-market-status{text-align:right}.broker-market-status strong{display:block;margin:4px 0 8px}
+.broker-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
+.broker-stats>div{padding:13px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.02)}
+.broker-stats small{display:block;color:var(--muted);margin-bottom:6px}
+.broker-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.chart-cursor-readout{text-align:right;min-width:160px}.chart-cursor-readout small,.chart-cursor-readout span{display:block}.chart-cursor-readout strong{display:block;margin:3px 0}
+.interactive-chart-wrap{height:360px;border:1px solid var(--line);border-radius:17px;background:#07131f;position:relative;overflow:hidden;cursor:crosshair;margin-top:12px}
+#price-chart{width:100%;height:100%;display:block}
+.chart-price-line{fill:none;stroke:#35e08f;stroke-width:3;vector-effect:non-scaling-stroke}
+.chart-grid-line{stroke:#203650;stroke-width:1}
+.chart-end-dot{fill:#35e08f}.chart-svg-label{fill:#72859c;font-size:13px}
+.chart-crosshair{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.3);pointer-events:none}
+.chart-tooltip{position:absolute;min-width:108px;padding:8px 10px;background:#10243a;border:1px solid #36506f;border-radius:10px;box-shadow:0 10px 28px rgba(0,0,0,.35);pointer-events:none}
+.chart-tooltip strong,.chart-tooltip small{display:block}.chart-tooltip small{color:var(--muted);margin-top:3px}
+.trade-ticket label{display:block;color:var(--muted);font-size:12px;margin:13px 0 6px}
+.trade-ticket select,.trade-ticket input{width:100%;background:#07131f;color:#fff;border:1px solid var(--line);border-radius:11px;padding:12px}
+.order-segmented{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:4px;background:#07131f;border:1px solid var(--line);border-radius:12px;margin:12px 0}
+.order-segmented button{border:0;background:transparent;color:var(--muted);padding:10px;border-radius:9px;cursor:pointer;font-weight:800}
+.order-segmented button.active{background:#14324a;color:#fff}.order-segmented button[data-side="BUY"].active{color:#9df1c5}.order-segmented button[data-side="SELL"].active{color:#ffb1b8}
+.order-estimate{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:13px 0}
+.order-estimate span{border:1px solid var(--line);border-radius:11px;padding:10px}.order-estimate small{display:block;color:var(--muted);margin-bottom:3px}
+.broker-place-order{width:100%;margin-top:15px}.broker-place-order.sell-order{background:#5b2430;border-color:#7e3443}
+.broker-holdings-list{display:grid;gap:8px}.holding-broker-row{display:flex;width:100%;justify-content:space-between;gap:10px;text-align:left;border:1px solid var(--line);border-radius:12px;padding:12px;background:rgba(255,255,255,.02);color:var(--text);cursor:pointer}
+.holding-broker-row small{display:block;color:var(--muted);margin-top:3px}.holding-broker-row>span:last-child{text-align:right}
+.broker-table-wrap{overflow-x:auto}.broker-table{width:100%;border-collapse:collapse;min-width:680px}.broker-table th,.broker-table td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);font-size:13px}.broker-table th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.review-order-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}.review-order-grid span{padding:12px;border:1px solid var(--line);border-radius:12px}.review-order-grid small{display:block;color:var(--muted);margin-bottom:4px}
+.order-risk-note{padding:12px;border-left:3px solid #76a9ff;background:rgba(118,169,255,.06);color:#c7d7eb;margin:14px 0}
+.broker-review-card{max-width:600px}
+@media(max-width:1080px){.broker-grid{grid-template-columns:1fr}.broker-side{position:static}.broker-stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.broker-account-top{flex-direction:column}.broker-market-status{text-align:left}.broker-stats{grid-template-columns:1fr 1fr}.review-order-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.broker-stats{grid-template-columns:1fr}.interactive-chart-wrap{height:300px}}

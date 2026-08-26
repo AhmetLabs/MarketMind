@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>MarketMind — Simulator</title>
+  <title>MarketMind — Realistic Simulator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,99 +38,140 @@
   <div class="sidebar-label">ACCOUNT</div>
   <a href="settings.html">⚙ Settings</a>
   <a href="upgrade.html">♢ Upgrade plan</a>
-</aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
+</aside>
+<div id="sidebar-overlay" class="sidebar-overlay"></div>
 
 <main class="shell">
   <section class="page-hero">
-    <p class="eyebrow">PRACTICE MODE · V0.5</p>
-    <h1>Historical Market Simulator</h1>
-    <p class="muted">Rewind through a fictional market timeline, analyze an asset, then buy, hold, add, or sell with virtual cash.</p>
+    <p class="eyebrow">MARKETMIND v1.3 · REALISTIC SIMULATOR CORE</p>
+    <h1>Virtual Brokerage</h1>
+    <p class="muted">Practice with fictional assets, persistent prices and a broker-style portfolio. The simulated market catches up when you return after being offline.</p>
   </section>
 
-  <section class="simulator-v5-grid">
-    <div class="simulator-main">
-      <article class="card">
-        <div class="portfolio-hero">
-          <div class="portfolio-value">
-            <small>Portfolio value</small>
-            <strong id="portfolio-value">€10,000.00</strong>
+  <section class="broker-grid">
+    <div class="broker-main">
+      <article class="card broker-account-card">
+        <div class="broker-account-top">
+          <div>
+            <small class="muted">Portfolio value</small>
+            <strong id="account-equity" class="broker-big-number">€10,000.00</strong>
+            <span id="account-day-change" class="positive">€0.00 (0.00%) today</span>
           </div>
-          <div class="sim-date-box">
-            <small>Simulation date</small>
-            <strong id="simulation-date">—</strong>
+          <div class="broker-market-status">
+            <small class="muted">Simulation clock</small>
+            <strong id="sim-clock">—</strong>
+            <span id="offline-status" class="pill">Market synced</span>
           </div>
         </div>
 
-        <div class="stat-strip">
-          <div class="stat-box"><small>Cash</small><strong id="cash-value">€10,000.00</strong></div>
-          <div class="stat-box"><small>Invested</small><strong id="invested-value">€0.00</strong></div>
-          <div class="stat-box"><small>Total return</small><strong id="return-value">0.0%</strong></div>
+        <div class="broker-stats">
+          <div><small>Cash</small><strong id="account-cash">€0.00</strong></div>
+          <div><small>Invested</small><strong id="account-invested">€0.00</strong></div>
+          <div><small>Buying power</small><strong id="account-buying-power">€0.00</strong></div>
+          <div><small>Unrealized P/L</small><strong id="account-unrealized">€0.00</strong></div>
+          <div><small>Realized P/L</small><strong id="account-realized">€0.00</strong></div>
         </div>
       </article>
 
-      <article class="card" style="margin-top:18px">
+      <article class="card broker-chart-card" style="margin-top:18px">
         <div class="card-head">
           <div>
-            <p class="eyebrow">INTERACTIVE CHART</p>
+            <p class="eyebrow">ASSET</p>
             <h2 id="asset-title">Aurora Tech</h2>
             <p class="muted" id="asset-subtitle">AUR · Stock</p>
           </div>
           <div class="price-block">
             <strong id="asset-price">€0.00</strong>
-            <span id="asset-change" class="positive">0.0%</span>
+            <span id="asset-change" class="positive">0.00%</span>
           </div>
         </div>
 
-        <div class="chart-toolbar" id="timeframe-buttons">
-          <button data-range="30">1M</button>
-          <button data-range="90">3M</button>
-          <button data-range="180">6M</button>
-          <button data-range="365" class="active">1Y</button>
-          <button data-range="730">2Y</button>
-          <button data-range="0">MAX</button>
-        </div>
-
-        <div class="chart-wrap">
-          <svg id="price-chart" viewBox="0 0 900 320" preserveAspectRatio="none" aria-label="Historical simulated price chart"></svg>
-          <div class="chart-axis-label" id="chart-range-label"></div>
-        </div>
-
-        <div class="rewind-box">
-          <div class="rewind-head">
-            <strong>Time travel</strong>
-            <span class="muted">Move through history without seeing future prices.</span>
+        <div class="broker-toolbar">
+          <div class="chart-toolbar" id="timeframe-buttons">
+            <button data-range="7">1W</button>
+            <button data-range="30">1M</button>
+            <button data-range="90">3M</button>
+            <button data-range="180">6M</button>
+            <button data-range="365" class="active">1Y</button>
+            <button data-range="0">MAX</button>
           </div>
-          <input id="time-slider" type="range" min="30" max="729" value="729">
-          <div class="rewind-actions">
-            <button id="rewind-30" class="btn ghost">← 30 days</button>
-            <button id="forward-30" class="btn ghost">30 days →</button>
-            <button id="jump-latest" class="btn secondary">Latest available</button>
+          <div class="chart-cursor-readout">
+            <small>Chart point</small>
+            <strong id="chart-point-price">Move over chart</strong>
+            <span id="chart-point-date" class="muted"></span>
           </div>
         </div>
+
+        <div class="interactive-chart-wrap" id="chart-wrap">
+          <svg id="price-chart" viewBox="0 0 1000 360" preserveAspectRatio="none" aria-label="Interactive simulated price chart"></svg>
+          <div id="chart-crosshair" class="chart-crosshair hidden"></div>
+          <div id="chart-tooltip" class="chart-tooltip hidden"></div>
+        </div>
+
+        <p class="trade-note">Hover or click anywhere on the chart to inspect the simulated price at that date. Future points are never shown.</p>
       </article>
 
       <article class="card" style="margin-top:18px">
         <div class="card-head">
-          <div><p class="eyebrow">SIMULATED MARKET</p><h2>Assets</h2></div>
-          <span class="muted">Fictional historical data</span>
+          <div><p class="eyebrow">MARKET</p><h2>Watchlist</h2></div>
+          <span class="muted">Fictional assets · persistent prices</span>
         </div>
         <div id="market-list" class="market-list"></div>
       </article>
+
+      <article class="card" style="margin-top:18px">
+        <div class="card-head">
+          <div><p class="eyebrow">OPEN ORDERS</p><h2>Pending limit orders</h2></div>
+          <span id="open-orders-count" class="pill">0</span>
+        </div>
+        <div id="open-orders" class="broker-table-wrap"></div>
+      </article>
+
+      <article class="card" style="margin-top:18px">
+        <div class="card-head">
+          <div><p class="eyebrow">ORDER HISTORY</p><h2>Transactions</h2></div>
+          <button id="clear-history" class="btn ghost">Clear display</button>
+        </div>
+        <div id="order-history" class="broker-table-wrap"></div>
+      </article>
     </div>
 
-    <div class="simulator-side">
-      <article class="card trade-box">
-        <p class="eyebrow">TRADE</p>
-        <h2>Virtual order</h2>
+    <div class="broker-side">
+      <article class="card trade-ticket">
+        <div class="card-head">
+          <div><p class="eyebrow">ORDER TICKET</p><h2>Place order</h2></div>
+          <span class="pill">Virtual</span>
+        </div>
 
-        <label class="muted">Asset</label>
+        <label>Asset</label>
         <select id="trade-asset"></select>
 
-        <label class="muted">Quantity</label>
-        <input id="trade-qty" type="number" min="1" value="1">
+        <div class="order-segmented" id="side-buttons">
+          <button data-side="BUY" class="active">Buy</button>
+          <button data-side="SELL">Sell</button>
+        </div>
+
+        <label>Order type</label>
+        <select id="order-type">
+          <option value="MARKET">Market order</option>
+          <option value="LIMIT">Limit order</option>
+        </select>
+
+        <div id="limit-price-row" class="hidden">
+          <label>Limit price</label>
+          <input id="limit-price" type="number" min="0.01" step="0.01">
+        </div>
+
+        <label>Quantity</label>
+        <input id="trade-qty" type="number" min="0.001" step="0.001" value="1">
+
+        <div class="order-estimate">
+          <span><small>Estimated price</small><strong id="estimate-price">€0.00</strong></span>
+          <span><small>Estimated value</small><strong id="estimate-value">€0.00</strong></span>
+        </div>
 
         <div class="analysis-actions">
-          <button id="analyze-btn" class="btn secondary">Analyze before buying</button>
+          <button id="analyze-btn" class="btn secondary">Quick analysis</button>
           <a class="btn ghost" href="asset-analysis.html">Full analysis</a>
         </div>
 
@@ -143,50 +184,49 @@
           <label><input type="checkbox" class="analysis-check"> I checked growth and profitability</label>
           <label><input type="checkbox" class="analysis-check"> I checked cash flow and debt</label>
           <label><input type="checkbox" class="analysis-check"> I considered valuation</label>
-          <label><input type="checkbox" class="analysis-check"> I wrote a reason for buying</label>
-          <textarea id="trade-thesis" placeholder="Why are you buying this asset?"></textarea>
+          <label><input type="checkbox" class="analysis-check"> I wrote a reason for the trade</label>
+          <textarea id="trade-thesis" placeholder="What is your thesis?"></textarea>
         </div>
 
-        <div class="trade-actions">
-          <button id="buy-btn" class="btn primary">Buy / Add</button>
-          <button id="sell-btn" class="btn ghost">Sell</button>
-        </div>
-
-        <p id="trade-message" class="trade-note">Virtual trades use only data available up to the selected simulation date.</p>
+        <button id="place-order" class="btn primary broker-place-order">Review & place order</button>
+        <p id="trade-message" class="trade-note">Market orders fill immediately at the current simulated price. Limit orders wait until the price crosses your limit.</p>
       </article>
 
       <article class="card" style="margin-top:18px">
         <div class="card-head">
-          <div><p class="eyebrow">YOUR POSITION</p><h2>Selected asset</h2></div>
-          <span id="holding-count" class="pill">0 assets</span>
+          <div><p class="eyebrow">POSITION</p><h2 id="position-title">Selected asset</h2></div>
         </div>
-        <div id="selected-position" class="position-card">
-          <p class="muted">No position in this asset yet.</p>
-        </div>
+        <div id="selected-position"><p class="muted">No position in this asset.</p></div>
       </article>
 
       <article class="card" style="margin-top:18px">
         <div class="card-head">
-          <div><p class="eyebrow">PORTFOLIO</p><h2>Holdings</h2></div>
-          <a class="btn ghost" href="portfolios.html">Manage</a>
+          <div><p class="eyebrow">HOLDINGS</p><h2>Portfolio</h2></div>
+          <span id="holding-count" class="pill">0 positions</span>
         </div>
-        <div id="holdings" class="holdings"><p class="muted">No positions yet.</p></div>
+        <div id="holdings"></div>
       </article>
 
-      <article class="card risk-card leverage-card" style="margin-top:18px">
-        <div class="card-head">
-          <div>
-            <p class="eyebrow">RISK EDUCATION</p>
-            <h2>Leverage</h2>
-          </div>
-          <span class="pill">Locked</span>
-        </div>
-        <p class="muted">Leverage is kept separate from the order buttons so the layout stays clear. Open the Leverage Lab to learn how exposure, margin and amplified losses work.</p>
-        <a class="btn ghost" href="leverage.html">Open Leverage Lab</a>
+      <article class="card" style="margin-top:18px">
+        <p class="eyebrow">RISK</p>
+        <h2>Leverage remains separate</h2>
+        <p class="muted">v1.3 makes the cash-account simulator realistic first. Margin borrowing and liquidation rules will be integrated only after the base order engine is stable.</p>
+        <a href="leverage.html" class="btn ghost">Open Leverage Lab</a>
       </article>
     </div>
   </section>
 </main>
+
+<div id="order-review-modal" class="contract-overlay hidden">
+  <div class="contract-card broker-review-card">
+    <p class="eyebrow">ORDER REVIEW</p>
+    <h2 id="review-title">Review order</h2>
+    <div id="review-details" class="review-order-grid"></div>
+    <div class="order-risk-note">This is a fictional educational simulation. No real securities or money are involved.</div>
+    <button id="confirm-order" class="btn primary">Confirm order</button>
+    <button id="cancel-order" class="btn ghost">Cancel</button>
+  </div>
+</div>
 
 <script src="app.js"></script>
 <script src="simulator.js"></script>
