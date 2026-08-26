@@ -11,10 +11,49 @@
   <div class="sidebar-label">INVEST</div>
   <a href="simulator.html">↗ Simulator</a>
   <a href="portfolios.html">▤ Portfolios</a>
+  <a href="calendar.html">▦ Performance Calendar</a>
   <a href="leverage.html">⚡ Leverage Lab</a>
   <a href="news.html">◫ News</a>
   <div class="sidebar-label">ACCOUNT</div>
   <a href="settings.html">⚙ Settings</a>
   <a href="upgrade.html">♢ Upgrade plan</a>
 </aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
-<main class="shell"><section class="page-hero"><p class="eyebrow">MARKETMIND</p><h1>Settings</h1><p class="muted">Daily word target, difficulty, theme, notifications and simulator preferences.</p></section><article class="card"><h2>Coming in a later version</h2><p class="muted">v0.4 adds the page structure now so it can be expanded cleanly later.</p></article></main><script src="app.js"></script></body></html>
+<main class="shell">
+  <section class="page-hero">
+    <p class="eyebrow">MARKETMIND</p>
+    <h1>Settings</h1>
+    <p class="muted">Progress repair, simulator preferences and account settings.</p>
+  </section>
+
+  <article class="card">
+    <p class="eyebrow">PROGRESS RECOVERY</p>
+    <h2>Restore legacy progress baseline</h2>
+    <p class="muted">Use this only if the v1.4 bug reset your level, MindCoins, streak or mastered concepts. It restores the safe MarketMind development baseline without deleting your simulator portfolios.</p>
+    <div class="settings-recovery-preview">
+      <span><small>Minimum level range</small><strong>Level 5</strong></span>
+      <span><small>MindCoins</small><strong>145+</strong></span>
+      <span><small>Mastered concepts</small><strong>36+</strong></span>
+      <span><small>Streak after repair</small><strong>1 day</strong></span>
+    </div>
+    <button id="repair-progress" class="btn primary">Restore legacy progress baseline</button>
+    <p id="repair-status" class="notice hidden" style="margin-top:14px"></p>
+  </article>
+
+  <article class="card" style="margin-top:18px">
+    <p class="eyebrow">DATA</p>
+    <h2>What this repair changes</h2>
+    <p class="muted">It repairs only learning/progression data. Portfolio cash, holdings, orders, simulator history and Performance Calendar data stay separate.</p>
+    <a class="btn ghost" href="calendar.html">Open Performance Calendar</a>
+  </article>
+</main><script src="app.js"></script><script>
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("repair-progress");
+  const status = document.getElementById("repair-status");
+  if (!button) return;
+  button.addEventListener("click", () => {
+    const s = restoreLegacyProgress();
+    status.textContent = `Progress restored: Level ${getLevelInfo(s.xp).level}, ${s.coins} MindCoins, ${s.masteredConcepts} mastered concepts, streak ${s.streak}.`;
+    status.classList.remove("hidden");
+  });
+});
+</script></body></html>

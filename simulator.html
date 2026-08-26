@@ -1,194 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>MarketMind — Simulator</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MarketMind — Simulator v1.4</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="topbar">
   <button class="menu-btn" id="menu-btn" aria-label="Open menu">☰</button>
   <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
-  <nav class="nav">
-    <a href="index.html">Dashboard</a>
-    <a href="lesson.html">Learn</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="dictionary.html">Dictionary</a>
-    <a class="active" href="simulator.html">Simulator</a>
-    <a href="analyst.html">Analyst Lab</a>
-  </nav>
+  <nav class="nav"><a href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a><a href="dictionary.html">Dictionary</a><a class="active" href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a></nav>
   <div class="profile-chip"><span class="avatar">A</span><span>Student</span></div>
 </header>
-
 <aside id="sidebar" class="sidebar">
-  <div class="sidebar-top"><strong>MarketMind</strong><button id="sidebar-close" class="sidebar-close" aria-label="Close menu">×</button></div>
-  <a href="profile.html">👤 Profile</a>
-  <div class="sidebar-label">LEARN</div>
-  <a href="index.html">⌂ Dashboard</a>
-  <a href="lesson.html">▣ Lessons</a>
-  <a href="dictionary.html">A–Z Dictionary</a>
-  <a href="quiz.html">✓ Quiz</a>
-  <a href="analyst.html">⌕ Analyst Lab</a>
-  <div class="sidebar-label">INVEST</div>
-  <a href="simulator.html">↗ Simulator</a>
-  <a href="portfolios.html">▤ Portfolios</a>
-  <a href="leverage.html">⚡ Leverage Lab</a>
-  <a href="news.html">◫ News</a>
-  <div class="sidebar-label">ACCOUNT</div>
-  <a href="settings.html">⚙ Settings</a>
-  <a href="upgrade.html">♢ Upgrade plan</a>
+  <div class="sidebar-top"><strong>MarketMind</strong><button id="sidebar-close" class="sidebar-close">×</button></div>
+  <a href="profile.html">👤 Profile</a><div class="sidebar-label">LEARN</div>
+  <a href="index.html">⌂ Dashboard</a><a href="lesson.html">▣ Lessons</a><a href="dictionary.html">A–Z Dictionary</a><a href="quiz.html">✓ Quiz</a><a href="analyst.html">⌕ Analyst Lab</a>
+  <div class="sidebar-label">INVEST</div><a href="simulator.html">↗ Simulator</a><a href="portfolios.html">▤ Portfolios</a>
+  <a href="calendar.html">▦ Performance Calendar</a><a href="leverage.html">⚡ Leverage Lab</a><a href="news.html">◫ News</a>
+  <div class="sidebar-label">ACCOUNT</div><a href="settings.html">⚙ Settings</a><a href="upgrade.html">♢ Upgrade plan</a>
 </aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
 
 <main class="shell">
-  <section class="page-hero">
-    <p class="eyebrow">PRACTICE MODE · V0.5</p>
-    <h1>Historical Market Simulator</h1>
-    <p class="muted">Rewind through a fictional market timeline, analyze an asset, then buy, hold, add, or sell with virtual cash.</p>
-  </section>
+<section class="page-hero simulator-hero-v14">
+  <div><p class="eyebrow">MARKETMIND v1.5.2 · BROKERAGE + HISTORICAL TRAINING</p><h1>Virtual Brokerage</h1>
+  <p class="muted">Fictional assets, persistent portfolios, cash/margin mechanics, dividends, corporate actions and historical replay.</p></div>
+  <div class="portfolio-switcher-card">
+    <label>Active portfolio</label>
+    <select id="portfolio-select"></select>
+    <a href="portfolios.html" class="btn ghost">Manage portfolios</a>
+  </div>
+</section>
 
-  <section class="simulator-v5-grid">
-    <div class="simulator-main">
-      <article class="card">
-        <div class="portfolio-hero">
-          <div class="portfolio-value">
-            <small>Portfolio value</small>
-            <strong id="portfolio-value">€10,000.00</strong>
-          </div>
-          <div class="sim-date-box">
-            <small>Simulation date</small>
-            <strong id="simulation-date">—</strong>
-          </div>
-        </div>
+<section id="replay-banner" class="replay-banner hidden">
+  <div><strong>Historical Replay active</strong><span id="replay-date">—</span></div>
+  <div class="replay-actions">
+    <select id="replay-speed" class="replay-speed" title="Replay speed">
+      <option value="1">1 day/tick</option>
+      <option value="5" selected>5 days/tick</option>
+      <option value="20">20 days/tick</option>
+    </select>
+    <button id="replay-fast-forward" class="btn secondary">▶▶ Fast forward</button>
+    <button id="replay-pause" class="btn ghost">⏸ Pause</button>
+    <button id="replay-exit-x" class="replay-close" aria-label="Exit replay">×</button>
+  </div>
+</section>
 
-        <div class="stat-strip">
-          <div class="stat-box"><small>Cash</small><strong id="cash-value">€10,000.00</strong></div>
-          <div class="stat-box"><small>Invested</small><strong id="invested-value">€0.00</strong></div>
-          <div class="stat-box"><small>Total return</small><strong id="return-value">0.0%</strong></div>
-        </div>
-      </article>
-
-      <article class="card" style="margin-top:18px">
-        <div class="card-head">
-          <div>
-            <p class="eyebrow">INTERACTIVE CHART</p>
-            <h2 id="asset-title">Aurora Tech</h2>
-            <p class="muted" id="asset-subtitle">AUR · Stock</p>
-          </div>
-          <div class="price-block">
-            <strong id="asset-price">€0.00</strong>
-            <span id="asset-change" class="positive">0.0%</span>
-          </div>
-        </div>
-
-        <div class="chart-toolbar" id="timeframe-buttons">
-          <button data-range="30">1M</button>
-          <button data-range="90">3M</button>
-          <button data-range="180">6M</button>
-          <button data-range="365" class="active">1Y</button>
-          <button data-range="730">2Y</button>
-          <button data-range="0">MAX</button>
-        </div>
-
-        <div class="chart-wrap">
-          <svg id="price-chart" viewBox="0 0 900 320" preserveAspectRatio="none" aria-label="Historical simulated price chart"></svg>
-          <div class="chart-axis-label" id="chart-range-label"></div>
-        </div>
-
-        <div class="rewind-box">
-          <div class="rewind-head">
-            <strong>Time travel</strong>
-            <span class="muted">Move through history without seeing future prices.</span>
-          </div>
-          <input id="time-slider" type="range" min="30" max="729" value="729">
-          <div class="rewind-actions">
-            <button id="rewind-30" class="btn ghost">← 30 days</button>
-            <button id="forward-30" class="btn ghost">30 days →</button>
-            <button id="jump-latest" class="btn secondary">Latest available</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="card" style="margin-top:18px">
-        <div class="card-head">
-          <div><p class="eyebrow">SIMULATED MARKET</p><h2>Assets</h2></div>
-          <span class="muted">Fictional historical data</span>
-        </div>
-        <div id="market-list" class="market-list"></div>
-      </article>
+<section class="broker-grid">
+<div class="broker-main">
+  <article class="card broker-account-card">
+    <div class="broker-account-top">
+      <div><small class="muted">Net liquidation value</small><strong id="account-equity" class="broker-big-number">€0.00</strong><span id="account-day-change">€0.00 today</span></div>
+      <div class="broker-market-status"><small class="muted">Simulation clock</small><strong id="sim-clock">—</strong><span id="offline-status" class="pill">Market synced</span></div>
     </div>
-
-    <div class="simulator-side">
-      <article class="card trade-box">
-        <p class="eyebrow">TRADE</p>
-        <h2>Virtual order</h2>
-
-        <label class="muted">Asset</label>
-        <select id="trade-asset"></select>
-
-        <label class="muted">Quantity</label>
-        <input id="trade-qty" type="number" min="1" value="1">
-
-        <div class="analysis-actions">
-          <button id="analyze-btn" class="btn secondary">Analyze before buying</button>
-          <a class="btn ghost" href="asset-analysis.html">Full analysis</a>
-        </div>
-
-        <div id="analysis-box" class="analysis-panel hidden">
-          <div class="analysis-score">
-            <span>Analysis score</span>
-            <strong id="analysis-score">0 / 5</strong>
-          </div>
-          <label><input type="checkbox" class="analysis-check"> I understand the business</label>
-          <label><input type="checkbox" class="analysis-check"> I checked growth and profitability</label>
-          <label><input type="checkbox" class="analysis-check"> I checked cash flow and debt</label>
-          <label><input type="checkbox" class="analysis-check"> I considered valuation</label>
-          <label><input type="checkbox" class="analysis-check"> I wrote a reason for buying</label>
-          <textarea id="trade-thesis" placeholder="Why are you buying this asset?"></textarea>
-        </div>
-
-        <div class="trade-actions">
-          <button id="buy-btn" class="btn primary">Buy / Add</button>
-          <button id="sell-btn" class="btn ghost">Sell</button>
-        </div>
-
-        <p id="trade-message" class="trade-note">Virtual trades use only data available up to the selected simulation date.</p>
-      </article>
-
-      <article class="card" style="margin-top:18px">
-        <div class="card-head">
-          <div><p class="eyebrow">YOUR POSITION</p><h2>Selected asset</h2></div>
-          <span id="holding-count" class="pill">0 assets</span>
-        </div>
-        <div id="selected-position" class="position-card">
-          <p class="muted">No position in this asset yet.</p>
-        </div>
-      </article>
-
-      <article class="card" style="margin-top:18px">
-        <div class="card-head">
-          <div><p class="eyebrow">PORTFOLIO</p><h2>Holdings</h2></div>
-          <a class="btn ghost" href="portfolios.html">Manage</a>
-        </div>
-        <div id="holdings" class="holdings"><p class="muted">No positions yet.</p></div>
-      </article>
-
-      <article class="card risk-card leverage-card" style="margin-top:18px">
-        <div class="card-head">
-          <div>
-            <p class="eyebrow">RISK EDUCATION</p>
-            <h2>Leverage</h2>
-          </div>
-          <span class="pill">Locked</span>
-        </div>
-        <p class="muted">Leverage is kept separate from the order buttons so the layout stays clear. Open the Leverage Lab to learn how exposure, margin and amplified losses work.</p>
-        <a class="btn ghost" href="leverage.html">Open Leverage Lab</a>
-      </article>
+    <div class="broker-stats broker-stats-v14">
+      <div><small>Cash</small><strong id="account-cash">€0</strong></div>
+      <div><small>Market value</small><strong id="account-invested">€0</strong></div>
+      <div><small>Buying power</small><strong id="account-buying-power">€0</strong></div>
+      <div><small>Unrealized P/L</small><strong id="account-unrealized">€0</strong></div>
+      <div><small>Realized P/L</small><strong id="account-realized">€0</strong></div>
+      <div><small>Margin loan</small><strong id="account-loan">€0</strong></div>
+      <div><small>Maintenance ratio</small><strong id="maintenance-ratio">—</strong></div>
+      <div><small>Interest accrued</small><strong id="margin-interest">€0</strong></div>
     </div>
-  </section>
+  </article>
+
+  <article class="card broker-chart-card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">ASSET</p><h2 id="asset-title">—</h2><p id="asset-subtitle" class="muted"></p></div><div class="price-block"><strong id="asset-price">€0</strong><span id="asset-change"></span></div></div>
+    <div class="broker-toolbar">
+      <div class="chart-toolbar" id="timeframe-buttons"><button data-range="7">1W</button><button data-range="30">1M</button><button data-range="90">3M</button><button data-range="180">6M</button><button data-range="365" class="active">1Y</button><button data-range="0">MAX</button></div>
+      <div class="chart-cursor-readout"><small>Chart point</small><strong id="chart-point-price">Move over chart</strong><span id="chart-point-date" class="muted"></span></div>
+    </div>
+    <div class="interactive-chart-wrap" id="chart-wrap"><svg id="price-chart" viewBox="0 0 1000 360" preserveAspectRatio="none"></svg><div id="chart-crosshair" class="chart-crosshair hidden"></div><div id="chart-tooltip" class="chart-tooltip hidden"></div></div>
+    <p class="trade-note">Hover to inspect a price. Click to lock the date. Historical Replay hides all later data.</p>
+  </article>
+
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">HISTORICAL TRAINING</p><h2>Rewind & replay</h2></div><span class="pill">No future data</span></div>
+    <p class="muted">Choose how far back you want to start. Replay uses a separate €10,000 training account and reveals prices one simulated day at a time.</p>
+    <div class="replay-control-grid">
+      <div>
+        <label>Start days back</label>
+        <input id="replay-days" type="range" min="30" max="720" step="30" value="365">
+        <strong id="replay-days-label">365 days back</strong>
+      </div>
+      <div>
+        <label>Starting cash</label>
+        <input id="replay-start-cash" type="number" min="1000" max="1000000000" step="1000" value="10000">
+        <small class="muted">€1,000 – €1B</small>
+      </div>
+      <div>
+        <small class="muted">Replay starts around</small>
+        <strong id="replay-start-date">—</strong>
+        <button id="replay-start" class="btn primary">Start historical replay</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">MARKET</p><h2>Watchlist</h2></div><span class="muted">Fictional prices</span></div>
+    <div id="market-list" class="market-list"></div>
+  </article>
+
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">EVENTS</p><h2>Dividends & corporate actions</h2></div><span id="event-count" class="pill">0</span></div>
+    <div id="event-feed" class="event-feed"></div>
+  </article>
+
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">OPEN ORDERS</p><h2>Pending limit orders</h2></div><span id="open-orders-count" class="pill">0</span></div>
+    <div id="open-orders" class="broker-table-wrap"></div>
+  </article>
+
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">ORDER HISTORY</p><h2>Transactions</h2></div><button id="clear-history" class="btn ghost">Clear display</button></div>
+    <div id="order-history" class="broker-table-wrap"></div>
+  </article>
+</div>
+
+<div class="broker-side">
+  <article class="card trade-ticket">
+    <div class="card-head"><div><p class="eyebrow">ORDER TICKET</p><h2>Place order</h2></div><span id="account-type-pill" class="pill">Cash</span></div>
+    <label>Asset</label><select id="trade-asset"></select>
+    <div class="order-segmented" id="side-buttons"><button data-side="BUY" class="active">Buy</button><button data-side="SELL">Sell</button></div>
+    <label>Order type</label><select id="order-type"><option value="MARKET">Market order</option><option value="LIMIT">Limit order</option></select>
+    <div id="limit-price-row" class="hidden"><label>Limit price</label><input id="limit-price" type="number" min="0.01" step="0.01"></div>
+    <label>Quantity</label><input id="trade-qty" type="number" min="0.001" step="0.001" value="1">
+    <div class="order-estimate"><span><small>Estimated price</small><strong id="estimate-price">€0</strong></span><span><small>Estimated value</small><strong id="estimate-value">€0</strong></span></div>
+    <div class="analysis-actions"><button id="analyze-btn" class="btn secondary">Quick analysis</button><a class="btn ghost" href="asset-analysis.html">Full analysis</a></div>
+    <div id="analysis-box" class="analysis-panel hidden"><div class="analysis-score"><span>Analysis score</span><strong id="analysis-score">0 / 5</strong></div>
+      <label><input type="checkbox" class="analysis-check"> I understand the business</label><label><input type="checkbox" class="analysis-check"> I checked growth and profitability</label><label><input type="checkbox" class="analysis-check"> I checked cash flow and debt</label><label><input type="checkbox" class="analysis-check"> I considered valuation</label><label><input type="checkbox" class="analysis-check"> I wrote a reason for the trade</label>
+      <textarea id="trade-thesis" placeholder="What is your thesis?"></textarea>
+    </div>
+    <button id="place-order" class="btn primary broker-place-order">Review buy order</button><p id="trade-message" class="trade-note">Market orders fill immediately. Marketable limit orders also fill immediately; otherwise they remain open.</p>
+  </article>
+
+  <article class="card margin-card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">MARGIN</p><h2>Account leverage</h2></div><span class="pill">Simplified rules</span></div>
+    <p class="muted">Margin accounts allow up to roughly 2× gross exposure. Maintenance margin is 30%; simulated interest accrues daily.</p>
+    <div class="margin-rule-grid"><span><small>Initial margin</small><strong>50%</strong></span><span><small>Maintenance</small><strong>30%</strong></span><span><small>Loan APR</small><strong>8%</strong></span></div>
+    <button id="toggle-margin" class="btn ghost">Enable margin account</button>
+    <button id="repay-margin" class="btn ghost hidden">Repay loan with cash</button>
+    <p id="margin-message" class="trade-note"></p>
+  </article>
+
+  <article class="card" style="margin-top:18px"><div class="card-head"><div><p class="eyebrow">POSITION</p><h2 id="position-title">Selected asset</h2></div></div><div id="selected-position"><p class="muted">No position.</p></div></article>
+  <article class="card" style="margin-top:18px"><div class="card-head"><div><p class="eyebrow">HOLDINGS</p><h2>Portfolio</h2></div><span id="holding-count" class="pill">0 positions</span></div><div id="holdings"></div></article>
+</div>
+</section>
 </main>
 
-<script src="app.js"></script>
-<script src="simulator.js"></script>
-</body>
-</html>
+<div id="order-review-modal" class="contract-overlay hidden"><div class="contract-card broker-review-card"><p class="eyebrow">ORDER REVIEW</p><h2 id="review-title">Review order</h2><div id="review-details" class="review-order-grid"></div><div class="order-risk-note">Educational simulation only. Margin rules are simplified and do not represent a specific broker.</div><button id="confirm-order" class="btn primary">Confirm order</button><button id="cancel-order" class="btn ghost">Cancel</button></div></div>
+<script src="app.js"></script><script src="simulator.js"></script>
+</body></html>
