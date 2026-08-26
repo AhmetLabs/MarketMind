@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>MarketMind — Simulator v1.4</title><link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MarketMind — Simulator v1.4</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="topbar">
   <button class="menu-btn" id="menu-btn" aria-label="Open menu">☰</button>
   <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a>
+  <nav class="nav"><a href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a><a href="dictionary.html">Dictionary</a><a class="active" href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a></nav>
   <nav class="nav"><a href="index.html">Dashboard</a><a href="lesson.html">Learn</a><a href="quiz.html">Quiz</a><a href="dictionary.html">Dictionary</a><a class="active" href="simulator.html">Simulator</a><a href="analyst.html">Analyst Lab</a></nav>
   <div class="profile-chip"><span class="avatar">A</span><span>Student</span></div>
 </header>
@@ -105,12 +108,61 @@
     <div class="card-head"><div><p class="eyebrow">EVENTS</p><h2>Dividends & corporate actions</h2></div><span id="event-count" class="pill">0</span></div>
     <div id="event-feed" class="event-feed"></div>
   </article>
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">MARKET</p><h2>Watchlist</h2></div><span class="muted">Fictional prices</span></div>
+    <div id="market-list" class="market-list"></div>
+  </article>
+
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">EVENTS</p><h2>Dividends & corporate actions</h2></div><span id="event-count" class="pill">0</span></div>
+    <div id="event-feed" class="event-feed"></div>
+  </article>
 
   <article class="card" style="margin-top:18px">
     <div class="card-head"><div><p class="eyebrow">OPEN ORDERS</p><h2>Pending limit orders</h2></div><span id="open-orders-count" class="pill">0</span></div>
     <div id="open-orders" class="broker-table-wrap"></div>
   </article>
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">OPEN ORDERS</p><h2>Pending limit orders</h2></div><span id="open-orders-count" class="pill">0</span></div>
+    <div id="open-orders" class="broker-table-wrap"></div>
+  </article>
 
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">ORDER HISTORY</p><h2>Transactions</h2></div><button id="clear-history" class="btn ghost">Clear display</button></div>
+    <div id="order-history" class="broker-table-wrap"></div>
+  </article>
+</div>
+
+<div class="broker-side">
+  <article class="card trade-ticket">
+    <div class="card-head"><div><p class="eyebrow">ORDER TICKET</p><h2>Place order</h2></div><span id="account-type-pill" class="pill">Cash</span></div>
+    <label>Asset</label><select id="trade-asset"></select>
+    <div class="order-segmented" id="side-buttons"><button data-side="BUY" class="active">Buy</button><button data-side="SELL">Sell</button></div>
+    <label>Order type</label><select id="order-type"><option value="MARKET">Market order</option><option value="LIMIT">Limit order</option></select>
+    <div id="limit-price-row" class="hidden"><label>Limit price</label><input id="limit-price" type="number" min="0.01" step="0.01"></div>
+    <label>Quantity</label><input id="trade-qty" type="number" min="0.001" step="0.001" value="1">
+    <div class="order-estimate"><span><small>Estimated price</small><strong id="estimate-price">€0</strong></span><span><small>Estimated value</small><strong id="estimate-value">€0</strong></span></div>
+    <div class="analysis-actions"><button id="analyze-btn" class="btn secondary">Quick analysis</button><a class="btn ghost" href="asset-analysis.html">Full analysis</a></div>
+    <div id="analysis-box" class="analysis-panel hidden"><div class="analysis-score"><span>Analysis score</span><strong id="analysis-score">0 / 5</strong></div>
+      <label><input type="checkbox" class="analysis-check"> I understand the business</label><label><input type="checkbox" class="analysis-check"> I checked growth and profitability</label><label><input type="checkbox" class="analysis-check"> I checked cash flow and debt</label><label><input type="checkbox" class="analysis-check"> I considered valuation</label><label><input type="checkbox" class="analysis-check"> I wrote a reason for the trade</label>
+      <textarea id="trade-thesis" placeholder="What is your thesis?"></textarea>
+    </div>
+    <button id="place-order" class="btn primary broker-place-order">Review buy order</button><p id="trade-message" class="trade-note">Market orders fill immediately. Marketable limit orders also fill immediately; otherwise they remain open.</p>
+  </article>
+
+  <article class="card margin-card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">MARGIN</p><h2>Account leverage</h2></div><span class="pill">Simplified rules</span></div>
+    <p class="muted">Margin accounts allow up to roughly 2× gross exposure. Maintenance margin is 30%; simulated interest accrues daily.</p>
+    <div class="margin-rule-grid"><span><small>Initial margin</small><strong>50%</strong></span><span><small>Maintenance</small><strong>30%</strong></span><span><small>Loan APR</small><strong>8%</strong></span></div>
+    <button id="toggle-margin" class="btn ghost">Enable margin account</button>
+    <button id="repay-margin" class="btn ghost hidden">Repay loan with cash</button>
+    <p id="margin-message" class="trade-note"></p>
+  </article>
+
+  <article class="card" style="margin-top:18px"><div class="card-head"><div><p class="eyebrow">POSITION</p><h2 id="position-title">Selected asset</h2></div></div><div id="selected-position"><p class="muted">No position.</p></div></article>
+  <article class="card" style="margin-top:18px"><div class="card-head"><div><p class="eyebrow">HOLDINGS</p><h2>Portfolio</h2></div><span id="holding-count" class="pill">0 positions</span></div><div id="holdings"></div></article>
+</div>
+</section>
   <article class="card" style="margin-top:18px">
     <div class="card-head"><div><p class="eyebrow">ORDER HISTORY</p><h2>Transactions</h2></div><button id="clear-history" class="btn ghost">Clear display</button></div>
     <div id="order-history" class="broker-table-wrap"></div>
