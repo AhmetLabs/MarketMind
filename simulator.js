@@ -1,4 +1,10 @@
 
+/* MarketMind v1.3 — persistent fictional brokerage engine */
+const MM_BROKER_KEY = "marketmind-broker-v13";
+const SIM_MINUTE_MS = 60 * 1000;
+const REAL_MINUTES_PER_SIM_DAY = 30; // 30 real minutes = one simulated market day.
+const MAX_OFFLINE_SIM_DAYS = 365;
+
 const PF_KEY="mm-pfs", PF_ACTIVE_KEY="mm-active-pf-v14";
 const SIM_MS=60*1000, REAL_MINUTES_PER_SIM_DAY=30, MAX_OFFLINE_SIM_DAYS=365;
 const INITIAL_MARGIN=0.50, MAINT_MARGIN=0.30, TARGET_MARGIN=0.35, MARGIN_APR=0.08;
