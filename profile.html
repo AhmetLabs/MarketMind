@@ -1,20 +1,14 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MarketMind — Profile</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><button class="menu-btn" id="menu-btn">☰</button><a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a></header>
-<aside id="sidebar" class="sidebar">
-  <div class="sidebar-top"><strong>MarketMind</strong><button id="sidebar-close" class="sidebar-close" aria-label="Close menu">×</button></div>
-  <a href="profile.html">👤 Profile</a>
-  <div class="sidebar-label">LEARN</div>
-  <a href="index.html">⌂ Dashboard</a>
-  <a href="lesson.html">▣ Lessons</a>
-  <a href="dictionary.html">A–Z Dictionary</a>
-  <a href="quiz.html">✓ Quiz</a>
-  <a href="analyst.html">⌕ Analyst Lab</a>
-  <div class="sidebar-label">INVEST</div>
-  <a href="simulator.html">↗ Simulator</a>
-  <a href="portfolios.html">▤ Portfolios</a>
-  <a href="leverage.html">⚡ Leverage Lab</a>
-  <a href="news.html">◫ News</a>
-  <div class="sidebar-label">ACCOUNT</div>
-  <a href="settings.html">⚙ Settings</a>
-  <a href="upgrade.html">♢ Upgrade plan</a>
-</aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
-<main class="shell"><section class="page-hero"><p class="eyebrow">MARKETMIND</p><h1>Profile</h1><p class="muted">Learning level, streak, badges and performance will live here.</p></section><article class="card"><h2>Coming in a later version</h2><p class="muted">v0.4 adds the page structure now so it can be expanded cleanly later.</p></article></main><script src="app.js"></script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MarketMind — Profile</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="topbar"><button class="menu-btn" id="menu-btn">☰</button><a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketMind</span></a><div class="profile-chip"><span class="avatar">A</span><span>Student</span></div></header>
+<aside id="sidebar" class="sidebar"><div class="sidebar-top"><strong>MarketMind</strong><button id="sidebar-close" class="sidebar-close">×</button></div><a href="profile.html">👤 Profile</a><div class="sidebar-label">LEARN</div><a href="index.html">⌂ Dashboard</a><a href="lesson.html">▣ Lessons</a><a href="dictionary.html">A–Z Dictionary</a><a href="quiz.html">✓ Quiz</a><a href="analyst.html">⌕ Analyst Lab</a><div class="sidebar-label">INVEST</div><a href="simulator.html">↗ Simulator</a><a href="portfolios.html">▤ Portfolios</a><a href="leverage.html">⚡ Leverage Lab</a><a href="news.html">◫ News</a><div class="sidebar-label">ACCOUNT</div><a href="settings.html">⚙ Settings</a><a href="upgrade.html">♢ Upgrade plan</a></aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
+<main class="shell"><section class="page-hero"><p class="eyebrow">YOUR PROGRESS</p><h1>Profile</h1><p class="muted">Your MarketMind progression now updates from real activity.</p></section>
+<section class="dashboard-grid profile-progress-grid">
+<article class="card"><p class="eyebrow">LEVEL</p><h2 id="profile-level">—</h2><p id="profile-path" class="muted"></p><div class="progress-bar"><div id="profile-xp-fill" class="progress-fill"></div></div><p id="profile-xp" class="muted"></p></article>
+<article class="card"><p class="eyebrow">STREAK</p><h2>🔥 <span id="profile-streak">0</span> days</h2><p class="muted">Miss a calendar day and the streak resets to 0.</p></article>
+<article class="card"><p class="eyebrow">MINDCOINS</p><h2>◈ <span id="profile-coins">0</span></h2><p class="muted">Later these can buy hints and full-answer reveals.</p></article>
+<article class="card"><p class="eyebrow">ACTIVITY</p><div class="metric-row"><span><small>Lessons</small><strong id="profile-lessons">0</strong></span><span><small>Quizzes</small><strong id="profile-quizzes">0</strong></span><span><small>Concepts</small><strong id="profile-concepts">0</strong></span></div></article>
+</section>
+<article class="card" style="margin-top:18px"><div class="card-head"><div><p class="eyebrow">UNLOCKS</p><h2>Feature progression</h2></div></div><div id="unlock-list" class="unlock-list"></div></article>
+</main><script src="app.js"></script><script>
+document.addEventListener('DOMContentLoaded',()=>{const s=getState(),l=getLevelInfo(s.xp),n=getNextLevelInfo(s.xp),p=levelProgress(s.xp);document.getElementById('profile-level').textContent=`Level ${l.level} — ${l.name}`;document.getElementById('profile-path').textContent=l.description;document.getElementById('profile-xp-fill').style.width=`${p}%`;document.getElementById('profile-xp').textContent=n?`${s.xp} XP · ${n.minXp-s.xp} XP to Level ${n.level}`:`${s.xp} XP · Max level`;document.getElementById('profile-streak').textContent=s.streak;document.getElementById('profile-coins').textContent=s.coins;document.getElementById('profile-lessons').textContent=s.lessonCompletions||0;document.getElementById('profile-quizzes').textContent=s.quizCompletions||0;document.getElementById('profile-concepts').textContent=s.masteredConcepts||0;const box=document.getElementById('unlock-list');Object.entries(FEATURE_UNLOCKS).forEach(([href,m])=>{const unlocked=l.level>=m.level;box.insertAdjacentHTML('beforeend',`<div class="unlock-row ${unlocked?'unlocked':'locked'}"><div><strong>${unlocked?'✓':'🔒'} ${m.label}</strong><small>Level ${m.level}</small></div><span>${unlocked?'Unlocked':'Locked'}</span></div>`)});});
+</script></body></html>

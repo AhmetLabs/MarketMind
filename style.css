@@ -301,3 +301,16 @@ button{color:inherit}
 .sidebar a:hover{background:#11243a;color:#fff}
 .sidebar-label{padding:18px 12px 6px;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.16em}
 body.menu-open{overflow:hidden}
+
+/* MarketMind v1.1 — real progression system */
+.locked-link{opacity:.42!important;cursor:not-allowed!important;position:relative}
+.locked-link::after{content:"🔒";float:right;font-size:11px;filter:grayscale(1)}
+.mm-toast-host{position:fixed;right:20px;bottom:20px;z-index:5000;display:grid;gap:10px;max-width:min(390px,90vw)}
+.mm-toast{transform:translateY(12px);opacity:0;background:#10243a;border:1px solid #294968;color:#eaf2fb;padding:13px 15px;border-radius:13px;box-shadow:0 16px 45px rgba(0,0,0,.35);transition:.2s ease}
+.mm-toast.show{transform:translateY(0);opacity:1}.mm-toast.level{border-color:#35e08f;color:#c9f7df}.mm-toast.unlock{border-color:#76a9ff;color:#d8e6ff}.mm-toast.locked{border-color:#8a6b38;color:#f3dba9}
+.level-card{transition:.2s ease;position:relative}.level-card.level-locked{opacity:.5;filter:saturate(.6)}.level-card.level-current{border-color:#35e08f;box-shadow:0 0 0 1px rgba(53,224,143,.12) inset}.level-card.level-complete{border-color:#2b5d49}.level-card.level-current::before{content:"CURRENT";position:absolute;right:14px;top:14px;color:#35e08f;font-size:9px;font-weight:900;letter-spacing:.12em}
+.levels-grid-extended{grid-template-columns:repeat(4,1fr)}
+.unlock-list{display:grid;gap:10px;margin-top:14px}.unlock-row{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}.unlock-row small{display:block;color:var(--muted);margin-top:3px}.unlock-row.unlocked{border-color:rgba(53,224,143,.22)}.unlock-row.unlocked>span{color:var(--green)}.unlock-row.locked{opacity:.6}
+.profile-progress-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:950px){.levels-grid-extended{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.levels-grid-extended,.profile-progress-grid{grid-template-columns:1fr}}
