@@ -18,6 +18,12 @@
   <div class="sidebar-label">INVEST</div><a href="simulator.html">↗ Simulator</a><a href="portfolios.html">▤ Portfolios</a>
   <a href="calendar.html">▦ Performance Calendar</a><a href="leverage.html">⚡ Leverage Lab</a><a href="news.html">◫ News</a>
   <div class="sidebar-label">ACCOUNT</div><a href="settings.html">⚙ Settings</a><a href="upgrade.html">♢ Upgrade plan</a>
+  <div class="sidebar-top"><strong>MarketMind</strong><button id="sidebar-close" class="sidebar-close">×</button></div>
+  <a href="profile.html">👤 Profile</a><div class="sidebar-label">LEARN</div>
+  <a href="index.html">⌂ Dashboard</a><a href="lesson.html">▣ Lessons</a><a href="dictionary.html">A–Z Dictionary</a><a href="quiz.html">✓ Quiz</a><a href="analyst.html">⌕ Analyst Lab</a>
+  <div class="sidebar-label">INVEST</div><a href="simulator.html">↗ Simulator</a><a href="portfolios.html">▤ Portfolios</a>
+  <a href="calendar.html">▦ Performance Calendar</a><a href="leverage.html">⚡ Leverage Lab</a><a href="news.html">◫ News</a>
+  <div class="sidebar-label">ACCOUNT</div><a href="settings.html">⚙ Settings</a><a href="upgrade.html">♢ Upgrade plan</a>
 </aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
 
 <main class="shell">
@@ -73,7 +79,70 @@
     <div class="interactive-chart-wrap" id="chart-wrap"><svg id="price-chart" viewBox="0 0 1000 360" preserveAspectRatio="none"></svg><div id="chart-crosshair" class="chart-crosshair hidden"></div><div id="chart-tooltip" class="chart-tooltip hidden"></div></div>
     <p class="trade-note">Hover to inspect a price. Click to lock the date. Historical Replay hides all later data.</p>
   </article>
+<section id="replay-banner" class="replay-banner hidden">
+  <div><strong>Historical Replay active</strong><span id="replay-date">—</span></div>
+  <div class="replay-actions">
+    <select id="replay-speed" class="replay-speed" title="Replay speed">
+      <option value="1">1 day/tick</option>
+      <option value="5" selected>5 days/tick</option>
+      <option value="20">20 days/tick</option>
+    </select>
+    <button id="replay-fast-forward" class="btn secondary">▶▶ Fast forward</button>
+    <button id="replay-pause" class="btn ghost">⏸ Pause</button>
+    <button id="replay-exit-x" class="replay-close" aria-label="Exit replay">×</button>
+  </div>
+</section>
 
+<section class="broker-grid">
+<div class="broker-main">
+  <article class="card broker-account-card">
+    <div class="broker-account-top">
+      <div><small class="muted">Net liquidation value</small><strong id="account-equity" class="broker-big-number">€0.00</strong><span id="account-day-change">€0.00 today</span></div>
+      <div class="broker-market-status"><small class="muted">Simulation clock</small><strong id="sim-clock">—</strong><span id="offline-status" class="pill">Market synced</span></div>
+    </div>
+    <div class="broker-stats broker-stats-v14">
+      <div><small>Cash</small><strong id="account-cash">€0</strong></div>
+      <div><small>Market value</small><strong id="account-invested">€0</strong></div>
+      <div><small>Buying power</small><strong id="account-buying-power">€0</strong></div>
+      <div><small>Unrealized P/L</small><strong id="account-unrealized">€0</strong></div>
+      <div><small>Realized P/L</small><strong id="account-realized">€0</strong></div>
+      <div><small>Margin loan</small><strong id="account-loan">€0</strong></div>
+      <div><small>Maintenance ratio</small><strong id="maintenance-ratio">—</strong></div>
+      <div><small>Interest accrued</small><strong id="margin-interest">€0</strong></div>
+    </div>
+  </article>
+
+  <article class="card broker-chart-card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">ASSET</p><h2 id="asset-title">—</h2><p id="asset-subtitle" class="muted"></p></div><div class="price-block"><strong id="asset-price">€0</strong><span id="asset-change"></span></div></div>
+    <div class="broker-toolbar">
+      <div class="chart-toolbar" id="timeframe-buttons"><button data-range="7">1W</button><button data-range="30">1M</button><button data-range="90">3M</button><button data-range="180">6M</button><button data-range="365" class="active">1Y</button><button data-range="0">MAX</button></div>
+      <div class="chart-cursor-readout"><small>Chart point</small><strong id="chart-point-price">Move over chart</strong><span id="chart-point-date" class="muted"></span></div>
+    </div>
+    <div class="interactive-chart-wrap" id="chart-wrap"><svg id="price-chart" viewBox="0 0 1000 360" preserveAspectRatio="none"></svg><div id="chart-crosshair" class="chart-crosshair hidden"></div><div id="chart-tooltip" class="chart-tooltip hidden"></div></div>
+    <p class="trade-note">Hover to inspect a price. Click to lock the date. Historical Replay hides all later data.</p>
+  </article>
+
+  <article class="card" style="margin-top:18px">
+    <div class="card-head"><div><p class="eyebrow">HISTORICAL TRAINING</p><h2>Rewind & replay</h2></div><span class="pill">No future data</span></div>
+    <p class="muted">Choose how far back you want to start. Replay uses a separate €10,000 training account and reveals prices one simulated day at a time.</p>
+    <div class="replay-control-grid">
+      <div>
+        <label>Start days back</label>
+        <input id="replay-days" type="range" min="30" max="720" step="30" value="365">
+        <strong id="replay-days-label">365 days back</strong>
+      </div>
+      <div>
+        <label>Starting cash</label>
+        <input id="replay-start-cash" type="number" min="1000" max="1000000000" step="1000" value="10000">
+        <small class="muted">€1,000 – €1B</small>
+      </div>
+      <div>
+        <small class="muted">Replay starts around</small>
+        <strong id="replay-start-date">—</strong>
+        <button id="replay-start" class="btn primary">Start historical replay</button>
+      </div>
+    </div>
+  </article>
   <article class="card" style="margin-top:18px">
     <div class="card-head"><div><p class="eyebrow">HISTORICAL TRAINING</p><h2>Rewind & replay</h2></div><span class="pill">No future data</span></div>
     <p class="muted">Choose how far back you want to start. Replay uses a separate €10,000 training account and reveals prices one simulated day at a time.</p>
@@ -149,6 +218,9 @@
 </section>
 </main>
 
+<div id="order-review-modal" class="contract-overlay hidden"><div class="contract-card broker-review-card"><p class="eyebrow">ORDER REVIEW</p><h2 id="review-title">Review order</h2><div id="review-details" class="review-order-grid"></div><div class="order-risk-note">Educational simulation only. Margin rules are simplified and do not represent a specific broker.</div><button id="confirm-order" class="btn primary">Confirm order</button><button id="cancel-order" class="btn ghost">Cancel</button></div></div>
+<script src="app.js"></script><script src="simulator.js"></script>
+</body></html>
 <div id="order-review-modal" class="contract-overlay hidden"><div class="contract-card broker-review-card"><p class="eyebrow">ORDER REVIEW</p><h2 id="review-title">Review order</h2><div id="review-details" class="review-order-grid"></div><div class="order-risk-note">Educational simulation only. Margin rules are simplified and do not represent a specific broker.</div><button id="confirm-order" class="btn primary">Confirm order</button><button id="cancel-order" class="btn ghost">Cancel</button></div></div>
 <script src="app.js"></script><script src="simulator.js"></script>
 </body></html>
