@@ -414,3 +414,22 @@ body.menu-open{overflow:hidden}
 /* MarketMind v1.5.2 simulator stability */
 .topbar > .nav + .nav{display:none!important}
 .broker-main > article.card[data-mm-duplicate="true"]{display:none!important}
+
+
+/* Final simulator layout guard */
+.broker-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(320px,.55fr);
+  gap:18px;
+  align-items:start;
+}
+.broker-main,.broker-side{min-width:0}
+.broker-side{
+  position:sticky;
+  top:88px;
+  align-self:start;
+}
+@media(max-width:1080px){
+  .broker-grid{grid-template-columns:1fr}
+  .broker-side{position:static}
+}
