@@ -943,5 +943,293 @@
     "definition": "Management’s decisions about how to deploy available capital among reinvestment, debt reduction, buybacks, dividends and acquisitions.",
     "formula": "",
     "example": ""
+  },
+  {
+    "term": "Present Value",
+    "abbr": "PV",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "The value today of a future cash flow after discounting it for time and required return.",
+    "formula": "PV = Future Cash Flow ÷ (1 + Discount Rate)^n",
+    "example": ""
+  },
+  {
+    "term": "Discount Rate",
+    "abbr": "",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "The required rate used to convert future cash flows into present value.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Opportunity Cost",
+    "abbr": "",
+    "category": "Corporate Finance",
+    "level": "Intermediate",
+    "definition": "The value of the best alternative given up when choosing one use of capital over another.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Terminal Value",
+    "abbr": "TV",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "The estimated value of cash flows beyond the explicit forecast period in a DCF.",
+    "formula": "TV = FCF_(n+1) ÷ (WACC − g)",
+    "example": ""
+  },
+  {
+    "term": "Terminal Growth Rate",
+    "abbr": "TGR",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "The long-run perpetual growth assumption used in a perpetuity-growth terminal value method.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Perpetuity Growth Method",
+    "abbr": "",
+    "category": "Valuation",
+    "level": "Advanced",
+    "definition": "A terminal value method that assumes free cash flow grows at a constant rate forever after the explicit forecast.",
+    "formula": "TV = FCF_(n+1) ÷ (WACC − g)",
+    "example": ""
+  },
+  {
+    "term": "Discounted Cash Flow",
+    "abbr": "DCF",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "A valuation method that estimates value by discounting expected future cash flows to present value.",
+    "formula": "Enterprise Value ≈ PV Forecast FCF + PV Terminal Value",
+    "example": ""
+  },
+  {
+    "term": "Intrinsic Value",
+    "abbr": "",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "An estimated fundamental value based on assumptions about cash flows, growth and risk rather than market price.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Sensitivity Analysis",
+    "abbr": "",
+    "category": "Valuation",
+    "level": "Advanced",
+    "definition": "An analysis showing how valuation changes when important assumptions such as WACC or terminal growth change.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "CAPM",
+    "abbr": "CAPM",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "Capital Asset Pricing Model; a model used to estimate Cost of Equity.",
+    "formula": "Cost of Equity = Rf + Beta × ERP",
+    "example": ""
+  },
+  {
+    "term": "Risk-Free Rate",
+    "abbr": "Rf",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "A baseline return used for an investment with very low credit risk in valuation models.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Beta",
+    "abbr": "β",
+    "category": "Markets",
+    "level": "Intermediate",
+    "definition": "A measure of an equity's sensitivity to market movements; not a guarantee of the stock's actual future move.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Equity Risk Premium",
+    "abbr": "ERP",
+    "category": "Valuation",
+    "level": "Intermediate",
+    "definition": "The additional required return investors demand for bearing equity market risk above the risk-free rate.",
+    "formula": "ERP = Expected Market Return − Risk-Free Rate",
+    "example": ""
+  },
+  {
+    "term": "After-Tax Cost of Debt",
+    "abbr": "",
+    "category": "Corporate Finance",
+    "level": "Intermediate",
+    "definition": "The effective cost of debt after the tax effect of deductible interest in a simplified WACC framework.",
+    "formula": "After-Tax Kd = Kd × (1 − Tax Rate)",
+    "example": ""
+  },
+  {
+    "term": "Tax Shield",
+    "abbr": "",
+    "category": "Corporate Finance",
+    "level": "Intermediate",
+    "definition": "A tax saving created when deductible expenses such as interest reduce taxable income.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Capital Structure",
+    "abbr": "",
+    "category": "Capital Structure",
+    "level": "Intermediate",
+    "definition": "The mix of debt and equity used to finance a company.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Equity Weight",
+    "abbr": "E/V",
+    "category": "Capital Structure",
+    "level": "Intermediate",
+    "definition": "The proportion of total debt-plus-equity financing represented by equity in WACC.",
+    "formula": "Equity Weight = Equity ÷ (Equity + Debt)",
+    "example": ""
+  },
+  {
+    "term": "Debt Weight",
+    "abbr": "D/V",
+    "category": "Capital Structure",
+    "level": "Intermediate",
+    "definition": "The proportion of total debt-plus-equity financing represented by debt in WACC.",
+    "formula": "Debt Weight = Debt ÷ (Equity + Debt)",
+    "example": ""
+  },
+  {
+    "term": "Operating Leverage",
+    "abbr": "",
+    "category": "Financial Analysis",
+    "level": "Intermediate",
+    "definition": "The effect of relatively fixed operating costs causing Operating Income to change more strongly than Revenue.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Degree of Operating Leverage",
+    "abbr": "DOL",
+    "category": "Financial Analysis",
+    "level": "Advanced",
+    "definition": "A measure of how sensitive Operating Income is to a percentage change in Revenue over a period.",
+    "formula": "DOL = % Change Operating Income ÷ % Change Revenue",
+    "example": ""
+  },
+  {
+    "term": "Incremental Margin",
+    "abbr": "",
+    "category": "Financial Analysis",
+    "level": "Intermediate",
+    "definition": "The amount of additional Operating Income generated from additional Revenue.",
+    "formula": "Incremental Margin = Δ Operating Income ÷ Δ Revenue",
+    "example": ""
+  },
+  {
+    "term": "Top-Line Growth",
+    "abbr": "",
+    "category": "Financial Analysis",
+    "level": "Beginner",
+    "definition": "Growth in Revenue, called top-line because Revenue appears near the top of the income statement.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Bottom-Line Growth",
+    "abbr": "",
+    "category": "Financial Analysis",
+    "level": "Beginner",
+    "definition": "Growth in Net Income, called bottom-line because Net Income appears near the bottom of the income statement.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Fixed Costs",
+    "abbr": "",
+    "category": "Accounting",
+    "level": "Beginner",
+    "definition": "Costs that remain relatively stable over a relevant short-term range even when sales or output changes.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Variable Costs",
+    "abbr": "",
+    "category": "Accounting",
+    "level": "Beginner",
+    "definition": "Costs that tend to change with production volume, sales or business activity.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Cash Conversion",
+    "abbr": "",
+    "category": "Cash Flow",
+    "level": "Intermediate",
+    "definition": "A measure of how effectively reported earnings are converted into operating cash flow in a period.",
+    "formula": "Cash Conversion = OCF ÷ Net Income × 100",
+    "example": ""
+  },
+  {
+    "term": "Red Flag",
+    "abbr": "",
+    "category": "Investment Analysis",
+    "level": "Beginner",
+    "definition": "A warning signal that does not automatically prove a problem but justifies further investigation.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Margin Expansion",
+    "abbr": "",
+    "category": "Financial Analysis",
+    "level": "Intermediate",
+    "definition": "An increase in a profit margin, meaning more profit is generated per euro of Revenue.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Margin Compression",
+    "abbr": "",
+    "category": "Financial Analysis",
+    "level": "Intermediate",
+    "definition": "A decrease in a profit margin, meaning less profit is generated per euro of Revenue.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Adjusted Net Income",
+    "abbr": "",
+    "category": "Financial Analysis",
+    "level": "Intermediate",
+    "definition": "A modified Net Income figure that removes selected unusual or non-recurring items to analyze underlying earnings.",
+    "formula": "Adjusted Net Income = Reported Net Income − One-Time Gains + One-Time Charges",
+    "example": ""
+  },
+  {
+    "term": "One-Time Gain",
+    "abbr": "",
+    "category": "Accounting",
+    "level": "Intermediate",
+    "definition": "A non-recurring gain that increases reported profit but may not reflect normal ongoing operations.",
+    "formula": "",
+    "example": ""
+  },
+  {
+    "term": "Earnings Sustainability",
+    "abbr": "",
+    "category": "Financial Analysis",
+    "level": "Intermediate",
+    "definition": "The degree to which current earnings are likely to continue or recur in future periods.",
+    "formula": "",
+    "example": ""
   }
 ]

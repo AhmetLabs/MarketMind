@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MarketMind — Placement</title><link rel="stylesheet" href="style.css"></head><body>
+<main class="shell placement-shell"><section class="card placement-card"><p class="eyebrow">FIRST-TIME PLACEMENT</p><h1>Where should your path begin?</h1>
+<p class="muted">Choose the level you want to attempt. Higher starting levels are not granted automatically: you must pass the placement assessment.</p>
+<div class="placement-options">
+<button data-placement="1">Beginner <small>Target Level 1</small></button>
+<button data-placement="3">Amateur <small>Target Level 3</small></button>
+<button data-placement="6">Intermediate <small>Target Level 6</small></button>
+<button data-placement="12">Advanced <small>Target Level 12</small></button>
+<button data-placement="15">Expert <small>Target Level 15</small></button>
+</div>
+<div id="placement-test" class="hidden"><h2>Placement checkpoint</h2><p id="placement-prompt"></p><label>Self-assessment score for this prototype (0–100)</label><input id="placement-score" type="number" min="0" max="100" value="75"><button id="placement-submit" class="btn primary">Submit assessment</button></div>
+<div id="placement-result" class="notice hidden"></div><a href="learning-path.html" id="placement-continue" class="btn secondary hidden">Open learning path</a></section></main>
+<script src="app.js"></script><script src="placement.js"></script></body></html>

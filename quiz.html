@@ -5,6 +5,7 @@
   <a href="profile.html">👤 Profile</a>
   <div class="sidebar-label">LEARN</div>
   <a href="index.html">⌂ Dashboard</a>
+  <a href="learning-path.html">◉ Learning Path</a>
   <a href="lesson.html">▣ Lessons</a>
   <a href="dictionary.html">A–Z Dictionary</a>
   <a href="quiz.html">✓ Quiz</a>
@@ -12,6 +13,7 @@
   <div class="sidebar-label">INVEST</div>
   <a href="simulator.html">↗ Simulator</a>
   <a href="portfolios.html">▤ Portfolios</a>
+  <a href="calendar.html">▦ Performance Calendar</a>
   <a href="leverage.html">⚡ Leverage Lab</a>
   <a href="news.html">◫ News</a>
   <div class="sidebar-label">ACCOUNT</div>
@@ -19,4 +21,32 @@
   <a href="upgrade.html">♢ Upgrade plan</a>
 </aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
 
-<main class="shell"><section class="card"><p class="eyebrow">WEEKLY QUIZ</p><h1 id="quiz-question"></h1><div id="answer-grid" class="dictionary-grid"></div><div id="quiz-feedback" class="notice hidden" style="margin-top:15px"></div><button id="next-question" class="btn primary hidden" style="margin-top:15px">Next →</button><p class="muted">Score: <strong id="score-number">0</strong></p></section></main><script src="app.js"></script><script src="quiz.js"></script></body></html>
+<main class="shell">
+  <section id="quiz-card" class="card">
+    <p class="eyebrow">WEEKLY QUIZ</p>
+    <div class="lesson-meta-row">
+      <span id="quiz-progress-pill" class="pill">Question 1</span>
+      <span id="quiz-coin-balance" class="pill">0 MindCoins</span>
+    </div>
+    <h1 id="quiz-question"></h1>
+    <div id="answer-grid" class="dictionary-grid"></div>
+
+    <div class="quiz-help-row">
+      <button id="quiz-hint-btn" class="btn ghost">Hint · 4 coins</button>
+      <button id="quiz-answer-btn" class="btn ghost">Give full answer · 14 coins</button>
+    </div>
+    <div id="quiz-help-box" class="notice hidden"></div>
+
+    <div id="quiz-feedback" class="notice hidden" style="margin-top:15px"></div>
+    <button id="next-question" class="btn primary hidden" style="margin-top:15px">Next →</button>
+    <p class="muted">Score: <strong id="score-number">0</strong></p>
+  </section>
+
+  <section id="quiz-complete" class="card hidden">
+    <p class="eyebrow">QUIZ COMPLETE</p>
+    <h2>Review before reward</h2>
+    <p id="quiz-final-score" class="muted"></p>
+    <div id="quiz-missed-list" class="review-list"></div>
+    <button id="sign-quiz-contract" class="btn primary">Open finance contract</button>
+  </section>
+</main><script src="app.js"></script><script src="quiz.js"></script></body></html>

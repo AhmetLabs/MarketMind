@@ -5,6 +5,7 @@
   <a href="profile.html">👤 Profile</a>
   <div class="sidebar-label">LEARN</div>
   <a href="index.html">⌂ Dashboard</a>
+  <a href="learning-path.html">◉ Learning Path</a>
   <a href="lesson.html">▣ Lessons</a>
   <a href="dictionary.html">A–Z Dictionary</a>
   <a href="quiz.html">✓ Quiz</a>
@@ -12,6 +13,7 @@
   <div class="sidebar-label">INVEST</div>
   <a href="simulator.html">↗ Simulator</a>
   <a href="portfolios.html">▤ Portfolios</a>
+  <a href="calendar.html">▦ Performance Calendar</a>
   <a href="leverage.html">⚡ Leverage Lab</a>
   <a href="news.html">◫ News</a>
   <div class="sidebar-label">ACCOUNT</div>
@@ -19,5 +21,46 @@
   <a href="upgrade.html">♢ Upgrade plan</a>
 </aside><div id="sidebar-overlay" class="sidebar-overlay"></div>
 
-<main class="shell"><section class="card"><p class="eyebrow">DAILY LESSON</p><h1 id="concept-title">Revenue</h1><p id="concept-category" class="muted"></p><div class="term-formula hidden" id="formula-box"></div><p id="concept-description"></p><p id="concept-example" class="muted"></p><div class="progress-bar"><div id="lesson-progress-fill" class="progress-fill"></div></div><p id="lesson-progress-text" class="muted"></p><div style="display:flex;gap:10px;margin-top:18px"><button id="again-btn" class="btn ghost">Learn again</button><button id="know-btn" class="btn primary">I know this →</button></div></section></main>
+<main class="shell">
+  <section id="lesson-card" class="card">
+    <p class="eyebrow">DAILY LESSON</p>
+    <div class="lesson-meta-row">
+      <span id="lesson-phase" class="pill">Learning</span>
+      <span id="lesson-coin-balance" class="pill">0 MindCoins</span>
+    </div>
+    <h1 id="concept-title">Revenue</h1>
+    <p id="concept-category" class="muted"></p>
+    <div class="term-formula hidden" id="formula-box"></div>
+    <p id="concept-description"></p>
+    <p id="concept-example" class="muted"></p>
+
+    <div class="lesson-help-row">
+      <button id="lesson-hint-btn" class="btn ghost">Hint · 3 coins</button>
+      <button id="lesson-answer-btn" class="btn ghost">Full explanation · 10 coins</button>
+    </div>
+    <div id="lesson-help-box" class="notice hidden"></div>
+
+    <div class="progress-bar"><div id="lesson-progress-fill" class="progress-fill"></div></div>
+    <p id="lesson-progress-text" class="muted"></p>
+    <div class="lesson-actions">
+      <button id="again-btn" class="btn ghost">I don't know this yet</button>
+      <button id="know-btn" class="btn primary">I know this →</button>
+    </div>
+  </section>
+
+  <section id="lesson-review" class="card hidden">
+    <p class="eyebrow">REVIEW ROUND</p>
+    <h2>Concepts to revisit</h2>
+    <p class="muted">You marked these terms as unfamiliar. Review them once more before signing your finance contract.</p>
+    <div id="review-list" class="review-list"></div>
+    <button id="start-review-btn" class="btn primary">Start review</button>
+  </section>
+
+  <section id="lesson-complete" class="card hidden">
+    <p class="eyebrow">LESSON COMPLETE</p>
+    <h2>Ready for your finance contract</h2>
+    <p id="lesson-summary" class="muted"></p>
+    <button id="sign-lesson-contract" class="btn primary">Open finance contract</button>
+  </section>
+</main>
 <script src="app.js"></script><script src="lesson.js"></script></body></html>
