@@ -591,7 +591,10 @@ function setupBackNavigation() {
   const row = document.createElement("div");
   row.className = "page-back-row";
   row.innerHTML = `<button class="back-button" type="button" aria-label="Go back"><span aria-hidden="true">←</span><span>Back</span></button>`;
+  row.innerHTML = `<button class="back-button" type="button" aria-label="Go back"><span aria-hidden="true">←</span><span>Back</span></button>`;
   row.querySelector(".back-button").addEventListener("click", () => {
+    if (window.history.length > 1) window.history.back();
+    else window.location.href = "index.html";
     if (window.history.length > 1) window.history.back();
     else window.location.href = "index.html";
   });
@@ -703,7 +706,115 @@ function signFinanceContract({title="Finance Learning Contract", rewardXp=0, rew
       };
     };
   });
+document.addEventListener("DOMContentLoaded", () => {
+  recordVisit((window.location.pathname.split("/").pop() || "index.html").toLowerCase());
+  enforceCurrentPageUnlock();
+  updateStreakOnVisit();
+  updateDashboard();
+  setupReward();
+  setupSidebar();
+  setupBackNavigation();
+  setupFeatureLocks();
+  showLockedQueryMessage();
+});
+
+
+/* MarketMind v1.2 — rewards, contracts and help economy */
+const FINANCE_FACTS = [
+  "A company can report positive Net Income while generating negative Operating Cash Flow.",
+  "A higher Revenue Growth rate does not automatically mean a company is creating economic value.",
+  "ROIC above WACC generally suggests that a company is creating economic value on invested capital.",
+  "A DCF valuation can change materially when WACC or the Terminal Growth Rate changes slightly.",
+  "Accounts Receivable can rise even when the related cash has not yet been collected.",
+  "A share buyback can destroy value if a company repurchases shares well above intrinsic value.",
+  "Operating leverage can amplify both profit growth and profit declines.",
+  "Free Cash Flow is not the same as Net Income because accounting profit and cash generation differ.",
+  "A high ROE can sometimes be boosted by leverage or share buybacks rather than better operations.",
+  "Terminal Value often represents a large part of a DCF, which is why its assumptions deserve close scrutiny."
+];
+
+function spendMindCoins(cost, reason = "Purchase") {
+  const s = getState();
+  cost = Math.max(0, Number(cost) || 0);
+  if (s.coins < cost) {
+    showToast(`Not enough MindCoins. ${reason} costs ${cost}.`, "locked");
+    return false;
+  }
+  s.coins -= cost;
+  saveState(s);
+  updateDashboard();
+  showToast(`${reason}: -${cost} MindCoins`);
+  return true;
 }
+window.spendMindCoins = spendMindCoins;
+
+function randomFinanceFact() {
+  return FINANCE_FACTS[Math.floor(Math.random() * FINANCE_FACTS.length)];
+}
+window.randomFinanceFact = randomFinanceFact;
+
+function signFinanceContract({title="Finance Learning Contract", rewardXp=0, rewardCoins=0, activity="Contract reward"} = {}) {
+  return new Promise(resolve => {
+    const overlay = document.createElement("div");
+    overlay.className = "contract-overlay show";
+    overlay.innerHTML = `
+      <div class="contract-card">
+        <div class="contract-seal">MM</div>
+        <p class="eyebrow">MARKETMIND FINANCE CONTRACT</p>
+        <h2>${title}</h2>
+        <p class="contract-copy">I confirm that I completed this exercise honestly, reviewed the concepts I did not know, and understand that the goal is to improve my reasoning rather than only collect rewards.</p>
+        <div class="contract-terms">
+          <span>✓ Review unfamiliar concepts</span>
+          <span>✓ Use hints before full answers when possible</span>
+          <span>✓ Keep facts and hypotheses separate</span>
+        </div>
+        <label class="contract-sign-label">Sign your learning contract</label>
+        <input id="contract-signature" class="contract-signature" placeholder="Type your name or initials">
+        <label class="contract-check"><input id="contract-agree" type="checkbox"> I agree to the learning contract.</label>
+        <button id="contract-claim" class="btn primary" disabled>Sign & claim reward</button>
+        <button id="contract-cancel" class="btn ghost">Not yet</button>
+      </div>`;
+
+    document.body.appendChild(overlay);
+    const sig = overlay.querySelector("#contract-signature");
+    const agree = overlay.querySelector("#contract-agree");
+    const claim = overlay.querySelector("#contract-claim");
+    const update = () => claim.disabled = !(sig.value.trim() && agree.checked);
+    sig.addEventListener("input", update);
+    agree.addEventListener("change", update);
+
+    overlay.querySelector("#contract-cancel").onclick = () => {
+      overlay.remove();
+      resolve(false);
+    };
+    claim.onclick = () => {
+      const signer = sig.value.trim();
+      awardProgress({xp:rewardXp, coins:rewardCoins, activity});
+      const s = getState();
+      s.lastContractSignature = signer;
+      s.contractsSigned = (s.contractsSigned || 0) + 1;
+      saveState(s);
+      const fact = randomFinanceFact();
+      overlay.querySelector(".contract-card").innerHTML = `
+        <div class="contract-seal signed">✓</div>
+        <p class="eyebrow">CONTRACT SIGNED</p>
+        <h2>Reward unlocked</h2>
+        <div class="contract-reward">
+          <strong>+${rewardXp} XP</strong>
+          <strong>+${rewardCoins} MindCoins</strong>
+        </div>
+        <div class="finance-fact"><small>FINANCE FACT</small><p>${fact}</p></div>
+        <button id="contract-done" class="btn primary">Continue</button>`;
+      overlay.querySelector("#contract-done").onclick = () => {
+        overlay.remove();
+        resolve(true);
+      };
+    };
+  });
+}
+window.signFinanceContract = signFinanceContract;
+
+function restoreLegacyProgress(){const s=getState();s.xp=Math.max(s.xp,2100);s.masteredConcepts=Math.max(s.masteredConcepts,36);s.totalConcepts=Math.max(s.totalConcepts,145);s.coins=Math.max(s.coins,145);s.streak=1;s.lastActiveDate=localDateKey();saveState(s);updateDashboard();showToast("Progress repaired: legacy MarketMind baseline restored.","level");return s} window.restoreLegacyProgress=restoreLegacyProgress;
 window.signFinanceContract = signFinanceContract;
 
 function restoreLegacyProgress(){const s=getState();s.xp=Math.max(s.xp,2100);s.masteredConcepts=Math.max(s.masteredConcepts,36);s.totalConcepts=Math.max(s.totalConcepts,145);s.coins=Math.max(s.coins,145);s.streak=1;s.lastActiveDate=localDateKey();saveState(s);updateDashboard();showToast("Progress repaired: legacy MarketMind baseline restored.","level");return s} window.restoreLegacyProgress=restoreLegacyProgress;
